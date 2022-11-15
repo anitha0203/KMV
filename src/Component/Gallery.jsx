@@ -72,7 +72,7 @@ function Gallery() {
 
 
 
-    <div>
+    <div style={{marginBottom:"80px"}}>
       <Header1/>
       {hasError && (
         <p style={{ top: "50%", left: "50%", position: "absolute" ,color:"red",display:"flex"}}>
@@ -176,7 +176,7 @@ function Gallery() {
     <div>
       <Navbar fixed="bottom" className="justify-content-end" >
 <NavItem >
-<Nav.Link  href="/home"><Button  style={{color:"white",borderRadius:"5%",backgroundColor:"#1e3796",fontFamily:"arial",fontSize:"large"}}>Go to Home</Button></Nav.Link>
+<Nav.Link  href="/home"><Button  style={{color:"white",borderRadius:"5%",backgroundColor:"#1e3796",fontFamily:"arial"}}>Go to Home</Button></Nav.Link>
 </NavItem>
      </Navbar>
     </div>

@@ -4,7 +4,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
-import { Button, Col, Row, Stack } from "react-bootstrap";
+import { Button, Col, Container, Row, Stack } from "react-bootstrap";
 import axios from "axios";
 import Header from "./Header";
 import { Box } from "@mui/material";
@@ -53,13 +53,19 @@ function Upload() {
   const [butto, setButto] = useState(false);
   const [showError, setShowError] = useState("");
   const [fileRes, setFileRes] = useState("");
-  //const [showSpinner, setShowSpinner] = useState(false);
   const [loading, setLoading] = useState(false);
   const [dummy, setDummy] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 
   const onChange = (e) => {
     setImageSelected(e.target.files);
+    let images = [];
+    for (let i = 0; i < e.target.files.length; i++) {
+      images.push(URL.createObjectURL(e.target.files[i]));
+      console.log(images);
+      
+    }
+    console.log(imageselected);
     setButto(true);
   };
 
@@ -94,13 +100,12 @@ function Upload() {
       .then((result) => {
         setFileRes(result.data);
         setIsUploaded(true);
-       
+
         setLoading(false);
       })
       .catch((err) => {
         if (err.result) {
           setLoading(false);
-         
         } else if (err.request) {
           setShowError(err.request);
           setLoading(false);
@@ -109,6 +114,7 @@ function Upload() {
 
     setIsSelected(false);
   };
+  console.log(imageselected);
 
   return (
     <>
@@ -236,8 +242,15 @@ function Upload() {
       {/* uploadFile Starts */}
 
       {loading && !toogle && (
-        <div style={{ top: "50%", left: "50%", position: "absolute",transform: "translate(-50%, -50%)"}}>
-          <h3 style={{fontFamily:"arial"}}>Uploading files</h3>
+        <div
+          style={{
+            top: "50%",
+            left: "50%",
+            position: "absolute",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <h3 style={{ fontFamily: "arial" }}>Uploading files</h3>
           <ProgressBar style={{ width: "300px" }} animated="true" now={98} />
         </div>
       )}
@@ -256,48 +269,54 @@ function Upload() {
 
           <div className="container" style={{ marginTop: "150px" }}>
             <center>
-            <h3
-              style={{
-                fontFamily: "Arial",
-                fontWeight: "bold",
-                color: "#1e3796",
-                paddingBottom: "15px",
-                textAlign: "left",
-              }}
-            >
-              Upload Images
-            </h3>
-            {isSelected && loading && (
-                  <div>
-                    <ProgressBar animated now={85} />
-                  </div>
-                )}
-
-            </center>
-              <div
+              <h3
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "55vh",
-                  borderRadius: "7px",
-                  backgroundColor: "#f1f1f1",
+                  fontFamily: "Arial",
+                  fontWeight: "bold",
+                  color: "#1e3796",
+                  paddingBottom: "15px",
+                  textAlign: "left",
                 }}
               >
-                
-           
-                {isSelected && (
-                  <>
-                    <form style={{padding:"0px",margin:"0px"}}>
+                Upload Images
+              </h3>
+              {isSelected && loading && (
+                <div>
+                  <ProgressBar animated now={85} />
+                </div>
+              )}
+            </center>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "auto",
+                borderRadius: "7px",
+                backgroundColor: "#f1f1f1",
+              }}
+            >
+              {isSelected && (
+                <>
+                  <Container>
+                    <form style={{ padding: "0px", margin: "0px" }}>
                       <div
                         style={{
                           padding: "5px",
                         }}
                       >
-                        
                         <Row lg={12}>
-                          <Col sm={2} lg={5} style={{marginTop:"60px",marginRight:"70px"}}>
-                            <Stack style={{marginBottom:"50px",textAlign:"left"}}>
+                          <Col
+                            sm={2}
+                            lg={5}
+                            style={{ marginTop: "60px", marginRight: "70px" }}
+                          >
+                            <Stack
+                              style={{
+                                marginBottom: "50px",
+                                textAlign: "left",
+                              }}
+                            >
                               <label
                                 htmlFor="dates"
                                 style={{
@@ -316,37 +335,41 @@ function Upload() {
                                 </b>
                               </label>
                             </Stack>
-                              <Stack>
-                                <LocalizationProvider
-                                  dateAdapter={AdapterDayjs}
-                                >
+                            <Stack>
+                              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <div>
                                   <div>
-                                    <div>
-                                      <DatePicker
-                                        views={["year", "month"]}
-                                        minDate={dayjs("2019-03-01")}
-                                        maxDate={dayjs("2024-12-01")}
-                                        value={startDate}
-                                        onChange={(startDate) => {
-                                          setStartDate(startDate);
-                                          setDummy(true);
-                                          console.log("valueb:----", startDate);
-                                        }}
-                                        renderInput={(params) => (
-                                          <TextField
-                                            {...params}
-                                            helperText={null}
-                                          />
-                                        )}
-                                      />
-                                    </div>
+                                    <DatePicker
+                                      views={["year", "month"]}
+                                      minDate={dayjs("2019-03-01")}
+                                      maxDate={dayjs("2024-12-01")}
+                                      value={startDate}
+                                      onChange={(startDate) => {
+                                        setStartDate(startDate);
+                                        setDummy(true);
+                                        console.log("valueb:----", startDate);
+                                      }}
+                                      renderInput={(params) => (
+                                        <TextField
+                                          {...params}
+                                          helperText={null}
+                                        />
+                                      )}
+                                    />
                                   </div>
-                                </LocalizationProvider>
-                              </Stack>
+                                </div>
+                              </LocalizationProvider>
+                            </Stack>
                           </Col>
-                         <center style={{borderRight:"1px solid gray"}}></center>
-                          <Col sm={2} lg={5} style={{marginTop:"35px",paddingLeft:"50px"}}>
-                            <Stack style={{marginBottom:"20px"}}>
+                          <center
+                            style={{ borderRight: "1px solid gray" }}
+                          ></center>
+                          <Col
+                            sm={2}
+                            lg={5}
+                            style={{ marginTop: "35px", paddingLeft: "50px" }}
+                          >
+                            <Stack style={{ marginBottom: "20px" }}>
                               <center>
                                 <img
                                   src={require("../images/uploadicon.png")}
@@ -370,98 +393,107 @@ function Upload() {
                                   cursor: "pointer",
                                   alignItems: "center",
                                   padding: "35px",
-                                  float:"left"
+                                  float: "left",
                                 }}
                               ></input>
                             </Stack>
                           </Col>
                         </Row>
                       </div>
-                      <row>
-                      <div style={{ alignItems: "center" }}>
+                     
+                      <Row className="justify-content-md-center" style={{ textAlign: "center" }}>
+                      <center>
+                        <Col>
                        
-                        {isSelected && (
-                          <div  style={{ alignItems: "center"}}>
-                            <button
-                              type="submit"
-                              disabled={!butto}
-                              className="button btn-primary btn"
-                              onClick={uploadImage}
+                          {isSelected && (
+                            <div
                               style={{
-                                backgroundColor: "green",
-                                fontSize: "23px",
-                                fontWeight: "bold",
-                                padding: "10px",
-                                marginTop: "55px",
-                                width: "200px",
-                                fontFamily: "Arial",
-                                cursor:"pointer"
+                                alignItems: "center",
                               }}
                             >
-                              Upload
-                            </button>
-                          </div>
-                        )}
-                      
-                      </div>
-                      </row>
+                              <button
+                                type="submit"
+                                disabled={!butto}
+                                className="button btn-primary btn"
+                                onClick={uploadImage}
+                                style={{
+                                  backgroundColor: "green",
+                                  fontSize: "23px",
+                                  fontWeight: "bold",
+                                  padding: "10px",
+                                  marginTop: "55px",
+                                  alignItems:"center",
+                                  width: "200px",
+                                  fontFamily: "Arial",
+                                  cursor: "pointer",
+                                }}
+                              >
+                                Upload
+                              </button>
+                            </div>
+                          )}
+                     
+                        </Col>
+                        </center>
+                      </Row>
+                     
                     </form>
-                  </>
-                )}
+                  </Container>
+                </>
+              )}
 
-                {!isUploaded && loading && (
+              {!isUploaded && loading && (
+                <div>
+                  <ProgressBar animated="true" now={55} />
+                </div>
+              )}
+              {isUploaded && (
+                <>
                   <div>
-                    <ProgressBar animated="true" now={55} />
+                    <lord-icon
+                      src="https://cdn.lordicon.com/hrqqslfe.json"
+                      trigger="hover"
+                      colors="primary:#109121,secondary:#ebe6ef"
+                      style={{ width: "100px", height: "100px" }}
+                    ></lord-icon>
+                    <br></br>
                   </div>
-                )}
-                {isUploaded && (
-                  <>
-                    <div>
-                      <lord-icon
-                        src="https://cdn.lordicon.com/hrqqslfe.json"
-                        trigger="hover"
-                        colors="primary:#109121,secondary:#ebe6ef"
-                        style={{ width: "100px", height: "100px" }}
-                      ></lord-icon>
-                      <br></br>
-                    </div>
-                    <div>
-                      <h2
-                        style={{
-                          color: "green",
-                          fontFamily: "arial",
-                          textDecorationLine: "none",
-                        }}
+                  <div>
+                    <h2
+                      style={{
+                        color: "green",
+                        fontFamily: "arial",
+                        textDecorationLine: "none",
+                      }}
+                    >
+                      {fileRes}
+                    </h2>
+                    <h2 style={{ color: "green" }}>{showError}</h2>
+                    <br />
+                    <h4>
+                      <a href="/upload" style={{ fontFamily: "arial" }}>
+                        <u>Click Here to Addmore</u>
+                      </a>
+                    </h4>
+                    <br />
+                    <h4>
+                      <a
+                        href="/home"
+                        style={{ color: "brown", fontFamily: "arial" }}
                       >
-                        {fileRes}
-                      </h2>
-                      <h2 style={{ color: "green" }}>{showError}</h2>
-                      <br />
-                      <h4>
-                        <a href="/upload" style={{ fontFamily: "arial" }}>
-                          <u>Click Here to Addmore</u>
-                        </a>
-                      </h4>
-                      <br />
-                      <h4>
-                        <a
-                          href="/home"
-                          style={{ color: "brown", fontFamily: "arial" }}
-                        >
-                         <u> Go to Home</u>
-                        </a>
-                      </h4>
-                    </div>
-                  </>
-                )}
-
-                {!isUploaded && (
-                  <div>
-                    <>{showError}</>
+                        <u> Go to Home</u>
+                      </a>
+                    </h4>
                   </div>
-                )}
-              </div>
-           
+                </>
+              )}
+
+              {!isUploaded && (
+                <div>
+                  <>{showError}</>
+                </div>
+              )}
+            </div>
           </div>
         </>
       )}
