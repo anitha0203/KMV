@@ -4,14 +4,14 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
-import { Button, Col, Container, Modal, Row, Stack, Toast, ToastContainer } from "react-bootstrap";
+import { Button, Col, Container, Modal, Row, Stack, Toast } from "react-bootstrap";
 import axios from "axios";
 import Header from "./Header";
 import { Box } from "@mui/material";
 import LoginForm from "../images/Login_3.jpg";
 import TextField from "@mui/material/TextField";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import { display } from "@mui/system";
+
 
 function Upload1() {
   const [toogle, setToogle] = useState(true);
@@ -61,7 +61,6 @@ function Upload1() {
   const [startDate, setStartDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
   const [showToastSucc,setShowToastSucc] = useState(false);
-  const [showToastFail,setShowToastFail] = useState(false);
   const [addMore,setAddMore]=useState([]);
 
   const onChange1=(e)=>{
@@ -151,12 +150,12 @@ setImageSelected(imagions);
         if (err.result) {
           setLoading(false);
           console.log(err.result)
-          setShowToastFail(true);
+          
         } else if (err.request) {
           setShowError(err.request);
           console.log(err.request)
           setLoading(false);
-          setShowToastFail(true);
+          
         }
       });
 
