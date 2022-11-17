@@ -4,9 +4,10 @@ import Main from './Component/Main';
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 import Gallery from './Component/Gallery';
 //import Upload from './Component/Upload';
-import Upload1 from './Component/Upload1';
+//import Upload1 from './Component/Upload1';
 import Date from './Component/Date';
-
+import Upload2 from './Component/Upload2';
+import Delete from './Component/Delete';
 
 function App() {
   return (
@@ -22,8 +23,11 @@ function App() {
       <Route path="/Gallery">
       <Gallery/>
       </Route>
-      <Route path="/Upload1">
-      <Upload1/>
+      <Route path="/Upload2">
+      <Upload2/>
+      </Route>
+      <Route path="/delete">
+      <Delete/>
       </Route>
       <Route path="/date">
       <Date/>

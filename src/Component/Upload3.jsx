@@ -13,7 +13,7 @@ import TextField from "@mui/material/TextField";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 
-function Upload1() {
+function Upload2() {
   const [toogle, setToogle] = useState(true);
   const [error, setError] = useState(false);
   const [errors, setErrors] = useState(false);
@@ -61,32 +61,42 @@ function Upload1() {
   const [startDate, setStartDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
   const [showToastSucc,setShowToastSucc] = useState(false);
-  const [addMore,setAddMore]=useState([]);
    const [images1,setImages1] =useState([]);
 
-  const onChange1=(e)=>{
-      setAddMore(e.target.files);
-      const images=[];
-      for (let i = 0; i < e.target.files.length; i++) {
-          var obj={};
-          obj["url"]=URL.createObjectURL(e.target.files[i]);
-          obj["name"]=e.target.files[i].name;
-         images.push(obj);
-         setAddMore(images1);
-      }
-      setImageSelected(...imageSelected,...e.target.files);
-      setImages1(images);
-      console.log("first",images)
 
-      setAddMore(images1);
-      console.log("addmore images",e.target.files);
-          console.log("images1 data of addmore",addMore);
+  const onChange1=(e)=>{
+   
+      for (let k = 0; k < e.target.files.length; k++) {
+          var obj={};
+          obj["url"]=URL.createObjectURL(e.target.files[k]);
+          obj["name"]=e.target.files[k].name;
+         preview.push(obj); 
+      }
+      console.log("addmore images url",preview);
+     const dump=[];
+      for(let i=0; i<e.target.files.length;i++){
+           dump.push(e.target.files[i]);
+      }
+     
+      console.log("dumping",dump)
+
+    if(e.target.files.length>0){
+      console.log("entered into loop")
+      setImages1(e.target.files);
+      setImageSelected([...imageSelected,...dump]) 
+    }
+    console.log("first",images1);
+    setImageSelected([...imageSelected,...dump]) 
+    console.log("next",imageSelected);  
+    console.log("final array size",imageSelected.length)
 
 
   }
 
 
+
   const onChange = (h) => {
+    h.preventDefault();
     setImageSelected(h.target.files);
      const images =[];
     for (let i = 0; i < h.target.files.length; i++) {
@@ -101,6 +111,21 @@ function Upload1() {
     console.log("input fields ",imageSelected);
     //console.log("preview data",preview)
     setButto(true);
+
+
+    console.log("previewData",preview)
+    const imagions=[];
+ 
+ 
+    //Deleting unwanted pics by comparing preview and selectedImage arrays
+     for(let l = 0; l < imageSelected.length; l++){
+     for(let j=0;j<preview.length;j++){
+             if(imageSelected[l].name === preview[j].name){
+                 imagions.push(imageSelected[l]);
+             }
+     }
+     }
+ console.log("imagions",imagions);
   };
 
   const modalUp = (e) => {
@@ -112,21 +137,9 @@ function Upload1() {
   const uploadImage = (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("previewData",preview)
-   const imagions=[];
 
-
-   //Deleting unwanted pics by comparing preview and selectedImage arrays
-    for(let i = 0; i < imageSelected.length; i++){
-    for(let j=0;j<preview.length;j++){
-            if(imageSelected[i].name === preview[j].name){
-                imagions.push(imageSelected[i]);
-            }
-    }
-    }
-console.log("imagions",imagions);
-setImageSelected(imagions);
-    //console.log("imagions data1-=-",imageSelected)
+//setImageSelected(imagions);
+    console.log("imagions data1-=-",imageSelected.length)
     const formData = new FormData();
     let store = new Date();
     if (dummy) {
@@ -142,7 +155,7 @@ setImageSelected(imagions);
 
     formData.append("Date", output);
 
-    Array.from(imagions).forEach((item) => {
+    Array.from(imageSelected).forEach((item) => {
       formData.append("Image", item);
     });
     const url = "https://highwayproject.herokuapp.com/upload";
@@ -317,10 +330,10 @@ setImageSelected(imagions);
         <>
           <style>
             {`
- .hover:hover{
-  cursor:pointer;
- },
- `}
+              .hover:hover{
+                cursor:pointer;
+              },
+              `}
           </style>
           <Header />                              
           <div className="container" style={{position:"absolute",display:"flex",left:"50%", justifyContent:"center", fontFamily:"Arial",transform:"translate(-50%,20%)"}}>
@@ -338,16 +351,18 @@ setImageSelected(imagions);
               {isSelected && (
                 <>
                   <Container>
+                 
                     <form
                       style={{ padding: "0px", height: "auto",margin:"50px" }}
                     >
+                     <h2 style={{textAlign:"left",color:"#1e3796",fontFamily:"arial",fontWeight:"bold"}}>Upload File</h2>
                       <div
                         style={{
                           padding: "15px",
                           margin:"5px",
                           backgroundColor: "#f1f1f1",
-                          width:"400px",
-                          height:"500px",
+                          width:"auto",
+                          height:"auto",
                         }}
                       >
                         <Row lg={12} style={{marginTop:"35px"}}>
@@ -371,7 +386,8 @@ setImageSelected(imagions);
                                 <b
                                   style={{
                                     fontStyle: "arial",
-                                    textAlign:"center"
+                                    textAlign:"center",
+                                    paddingRight:"70px"
                                   }}
                                 >
                                   Select the month to upload
@@ -413,6 +429,7 @@ setImageSelected(imagions);
                             lg={12}
                             style={{ marginTop: "95px",display:"inline-block" }}
                           >
+                           
                             <Stack>
                               <button
                                 style={{
@@ -422,7 +439,7 @@ setImageSelected(imagions);
                                   alignItems: "center",
                                   padding: "5px",
                                   justifyContent:"center",
-                                  width:"220px",
+                                  width:"180px",
                                   fontSize: "18px",
                                   border:"1px solid #1e3796",
                                   backgroundColor:"#1e3796",
@@ -431,10 +448,15 @@ setImageSelected(imagions);
                                 }}
                                 onClick={modalUp}
                               >
-                               Click Here to Upload
+                               Browse Files
                               </button>
                             </Stack>
                           </Col>
+                        </Row>
+                        <Row style={{margin:"50px 50px"}}>
+                          <Col style={{border:"1px solid gray",height:"120px",width:"250px",margin:"10px",padding:"2vh"}}><p style={{width:"200px",}}>You can choose up to 20 photos at a time</p></Col>
+                          <Col style={{border:"1px solid gray",height:"120px",width:"250px",margin:"10px",padding:"2vh"}}><p style={{width:"200px",}}>Use Ctrl/Cmd or Shift to Select Multiple images at a time</p></Col>
+                          <Col style={{border:"1px solid gray",height:"120px",width:"250px",margin:"10px",padding:"2vh"}}><p style={{width:"200px",}}>You can upload phiotos that are .JPEG,or.PNG</p></Col>
                         </Row>
                       </div>
                      
@@ -501,7 +523,7 @@ setImageSelected(imagions);
                         }
                                   <Container style={{height:"auto",marginTop:"20px"}}>
                                     <Row>
-                                    {preview.length > 0 ? (
+                                    {preview.length > 0 && (
                                       preview.map((itms, index) => {
                                         return (
                                         
@@ -540,19 +562,16 @@ setImageSelected(imagions);
                                               </>
                                         );
                                       })                                     
-                                    ) : (
-                                      <Col lg={12} style={{textAlign:"center",float:"right"}}>
-                                       <h4 style={{fontFamily:"arial"}}>No Images selected</h4>
-                                      </Col>
+                                    )  
                                      
-                                    )}
+                           
+                                    }
+                                
                                     </Row>
-                                   
-
-
                                   </Container>
-                                <Container>
-                                    
+
+                                
+                                <Container>   
                                 {preview.length < 20 && preview.length>=1 && 
                                   <button style={{                                                                                                                                                 
                                   backgroundColor:"#1e3796",
@@ -560,7 +579,7 @@ setImageSelected(imagions);
                                   verticalAlign:"middle",
                                   borderRadius:"5px",
                                   marginLeft:"25px"}} >
-                                    <input  id="add" onChange={onChange1} type="file" name="image" accept="image/jpeg,image/png" multiple hidden />
+                                    <input  id="add" onChange={onChange1} type="file" name="image" accept="image/jpeg,image/png"multiple hidden />
                                     <label style={{fontFamily:"arial",fontSize: "18px",cursor:"pointer", margin:"5px",}} htmlFor="add"  >Add more</label>
                                   </button>}
                                 </Container>
@@ -579,6 +598,9 @@ setImageSelected(imagions);
                                   onClick={() => {
                                     setShowModal(false);
                                     setPreview([]);
+                                    setImageSelected([]);
+                                    setImages1([]);
+                                  
                                   }}
                                 >
                                   Close
@@ -609,339 +631,6 @@ setImageSelected(imagions);
                   </Container>
                 </>
               )}
-
-
-{isSelected &&   isUploaded && (
-                <>
-                  <Container>
-                  {isUploaded && showToastSucc && (
-                          <Toast onClose={()=>{setShowToastSucc(false)}} show={showToastSucc} className="d-block" bg="success" position="top-center" delay={4000} autohide>
-                            <Toast.Header>
-                              <strong className="me-auto">Images upload</strong>
-                              <small>just now</small>
-                            </Toast.Header>
-                            <Toast.Body>Images uploaded successfully</Toast.Body>
-                          </Toast>
-                        )}
-                    <form
-                      style={{ padding: "0px", height: "auto",margin:"50px" }}
-                    >
-                      <div
-                        style={{
-                          padding: "15px",
-                          margin:"5px",
-                          backgroundColor: "#f1f1f1",
-                          width:"400px",
-                          height:"500px",
-                        }}
-                      >
-                        <Row lg={12} style={{marginTop:"35px"}}>
-                          <Col lg={12}>
-                          <Stack
-                              style={{
-                                marginBottom: "20px",
-                                
-                              }}
-                            >
-                              <label
-                                htmlFor="dates"
-                                style={{
-                                  color: "#1e3796",
-                                  fontFamily: "Arial",
-                                  alignItems: "center",
-                                  fontSize: "20px",
-                                  padding:"10px"
-                                }}
-                              >
-                                <b
-                                  style={{
-                                    fontStyle: "arial",
-                                    textAlign:"center"
-                                  }}
-                                >
-                                  Select the month to upload
-                                </b>
-                              </label>
-                            </Stack>
-                          
-                             <Stack>
-                              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <div>
-                                  <div>
-                                    <DatePicker
-                                      views={["year", "month"]}
-                                      minDate={dayjs("2019-03-01")}
-                                      maxDate={dayjs("2024-12-01")}
-                                      value={startDate}
-                                      onChange={(startDate) => {
-                                        setStartDate(startDate);
-                                        setDummy(true);
-                                        console.log("valueb:----", startDate);
-                                      }}
-                                      renderInput={(params) => (
-                                        <TextField
-                                          {...params}
-                                          helperText={null}
-                                        />
-                                      )}
-                                    />
-                                  </div>
-                                </div>
-                              </LocalizationProvider>
-                            </Stack>
-                          </Col>
-                        </Row>
-                       
-                        <Row lg={12}>
-                         
-                          <Col
-                            lg={12}
-                            style={{ marginTop: "95px",display:"inline-block" }}
-                          >
-                            <Stack>
-                              <button
-                                style={{
-                                  fontWeight: "bold",
-                                  fontFamily: "Arial",
-                                  cursor: "pointer",
-                                  alignItems: "center",
-                                  padding: "5px",
-                                  justifyContent:"center",
-                                  width:"220px",
-                                  fontSize: "18px",
-                                  border:"1px solid #1e3796",
-                                  backgroundColor:"#1e3796",
-                                  color:"whitesmoke",
-                                  borderRadius:"5px"
-                                }}
-                                onClick={modalUp}
-                              >
-                               Click Here to Upload
-                              </button>
-                            </Stack>
-                          </Col>
-                        </Row>
-                      </div>
-                     
-                      <Row style={{ width: "auto" }}>
-                        {showModal && (
-                          <div>
-                            <Modal
-                              show={showModal}
-                              size="lg"
-                              aria-labelledby="example-modal-sizes-title-lg"
-                            >
-                              <Modal.Header  style={{height:"50px"}} closeButton>
-                                <Modal.Title id="contained-modal-title-vcenter" >
-                                  <h4 style={{ textAlign: "center",fontFamily:"arial"}}>
-                                    upload Images
-                                  </h4>
-                                
-                                </Modal.Title>
-                               
-                              </Modal.Header>
-                              <Modal.Body >
-                          {preview.length<1 && <Container style={{border:"3px dotted gray",borderRadius:"55%",width:"300px",height:"300px",backgroundColor:"#eaeae1"}}>                                                                                      
-                            {preview.length<1 &&
-                                <Row >
-                                <div>
-                                    <div style={{position:"absolute",top:"40%",left:"50%", transform: "translate(-50%, -50%)",textAlign:"center"}}>
-                                    <center>
-                              <img
-                                src={require("../images/uploadicon.png")}
-                                style={{ width: "70px", padding: "10px 0px", }}
-                                alt="..."
-                              ></img>
-                               <label htmlFor="imageUpload"><h5 style={{textAlign:"center", color: "#1e3796",
-                                    fontWeight: "bold",
-                                    fontFamily: "Arial",
-                                    cursor: "pointer",
-                                    padding: "5px",width:"200px"}}>Choose Upto 20 Images to upload</h5></label>
-                            </center>
-                          </div>
-                          
-                                </div>
-                              </Row>
-                            }
-
-                              <Row style={{justifyContent:"center"}}>
-
-                                  <input
-                                    type="file"
-                                    id="imageUpload"
-                                    accept="image/*"
-                                    name="image"
-                                    onChange={onChange}
-                                    hidden
-                                    multiple
-                                    style={{
-                                      color: "#1e3796",
-                                      fontWeight: "bold",
-                                      fontFamily: "Arial",
-                                      cursor: "pointer"
-                                    }}
-                                  ></input>                                                                  
-                                  </Row>
-                                 </Container>
-                        }
-                                  <Container style={{height:"auto",marginTop:"20px"}}>
-                                    <Row>
-                                    {preview.length > 0 ? (
-                                      preview.map((itms, index) => {
-                                        return (
-                                        
-                                           <>
-                                              <Col md={3}>
-                                                <div className="container">
-                                                <img
-                                                    style={{
-                                                      width: "150px",
-                                                      height: "100px",margin:"10px"
-                                                    }}
-                                                    src={itms.url}
-                                                    alt={"image-" + index}
-                                                    key={index}
-                                                  />
-                                               
-                                                <div style={{position:"absolute",top:"-1%",right:"5%",backgroundColor:"white",zIndex:"1",cursor:"pointer",transform:"translate(-50%,50%)"}}>
-                                                      <div>
-                                                        <i onClick={(e) => {
-                                                          e.preventDefault();
-                                                          console.log(
-                                                            "deleted file num",
-                                                            index
-                                                          );
-                                                          const se = preview.filter(
-                                                            (itm, ind) =>
-                                                              ind !== index
-                                                          );
-                                                          setPreview(se);
-                                                          console.log(se);
-                                                        }}className="fa-solid fa-xmark" style={{color:"red",border:"1px solid red",padding:"1.8px",borderRadius:"1.5px"}}></i>
-                                                     </div>
-                                                </div>                                                                                               
-                                                </div>                                  
-                                              </Col>
-                                              </>
-                                        );
-                                      })                                     
-                                    ) : (
-                                      <Col lg={12} style={{textAlign:"center",float:"right"}}>
-                                       <h4 style={{fontFamily:"arial"}}>No Images selected</h4>
-                                      </Col>
-                                     
-                                    )}
-                                    </Row>
-                                    <Row>
-                                    {images1.length > 0 ? (
-                                      images1.map((itms1, index1) => {
-                                        return (
-                                        
-                                           <>
-                                              <Col md={3}>
-                                                <div className="container">
-                                                <img
-                                                    style={{
-                                                      width: "150px",
-                                                      height: "100px",margin:"10px"
-                                                    }}
-                                                    src={itms1.url}
-                                                    alt={"image-" + index1}
-                                                    key={index1}
-                                                  />
-                                               
-                                                <div style={{position:"absolute",top:"-1%",right:"5%",backgroundColor:"white",zIndex:"1",cursor:"pointer",transform:"translate(-50%,50%)"}}>
-                                                      <div>
-                                                        <i onClick={(e) => {
-                                                          e.preventDefault();
-                                                          console.log(
-                                                            "deleted file num",
-                                                            index1
-                                                          );
-                                                          const se = preview.filter(
-                                                            (itm, inds) =>
-                                                              inds !== index1
-                                                          );
-                                                          images1(se);
-                                                          console.log(se);
-                                                        }}className="fa-solid fa-xmark" style={{color:"red",border:"1px solid red",padding:"1.8px",borderRadius:"1.5px"}}></i>
-                                                     </div>
-                                                </div>                                                                                               
-                                                </div>                                  
-                                              </Col>
-                                              </>
-                                        );
-                                      })                                     
-                                    ) : (
-                                      <Col lg={12} style={{textAlign:"center",float:"right"}}>
-                                       <h4 style={{fontFamily:"arial"}}>No Images selected</h4>
-                                      </Col>
-                                     
-                                    )}
-                                    </Row>
-
-
-                                  </Container>
-                                <Container>
-                                    
-                                {preview.length < 20 && preview.length>=1 && 
-                                  <button style={{                                                                                                                                                 
-                                  backgroundColor:"#1e3796",
-                                  color:"whitesmoke",
-                                  verticalAlign:"middle",
-                                  borderRadius:"5px"}} >
-                                    <input  id="add" onChange={onChange1} type="file" multiple hidden />
-                                    <label style={{fontFamily:"arial",fontSize: "18px",cursor:"pointer", margin:"5px",}} htmlFor="add"  >Add more</label>
-                                  </button>}
-                                </Container>
-                                               
-                                 {preview.length>20 ?<Container style={{marginTop:"10px"}}><p style={{color:"red",fontFamily:"arial",margin:"15px",fontWeight:"bold"}}>Note*: Upload only 20 photos</p></Container>:''}
-                              </Modal.Body>
-                              <Modal.Footer>                               
-                                <Button
-                                  style={{
-                                    backgroundColor: "green",
-                                    fontSize: "18px",
-                                    fontWeight: "bold",
-                                    fontFamily: "Arial",
-                                    cursor: "pointer",
-                                  }}
-                                  onClick={() => {
-                                    setShowModal(false);
-                                    setPreview([]);
-                                  }}
-                                >
-                                  Close
-                                </Button>
-
-                               {preview.length<=20 && preview.length>=1 &&<Button
-                                  type="submit"
-                                  disabled={!butto}
-                                  className="button btn-primary btn"
-                                  onClick={uploadImage}
-                                  style={{
-                                    backgroundColor: "green",
-                                    fontSize: "18px",
-                                    fontWeight: "bold",
-                                    fontFamily: "Arial",
-                                    cursor: "pointer",
-                                  }}
-                                >
-                                  Upload
-                                </Button>
-                              }
-                              </Modal.Footer>
-                            </Modal>
-                          </div>
-                        )}
-                      </Row>
-                    </form>
-                  </Container>
-                </>
-              )}
-
-
-
               {isUploaded && (
                 <>
        
@@ -1009,4 +698,4 @@ setImageSelected(imagions);
   );
 }
 
-export default Upload1;
+export default Upload2;

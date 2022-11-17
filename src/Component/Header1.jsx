@@ -11,9 +11,9 @@ function Header1() {
               width="50"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
-            />{'  '} <span style={{fontSize:"20px",fontFamily: "Arial",fontWeight:"bold", paddingLeft: "10px"}}>Khammam Devarapalli Highway Private Ltd</span><container>
+            />{'  '} <span style={{fontSize:"20px",fontFamily: "Arial",fontWeight:"bold", paddingLeft: "10px"}}>Khammam Devarapalli Highway Private Ltd</span>
              
-              </container></h3> </Navbar.Brand>
+              </h3> </Navbar.Brand>
     <a href="/home"> </a>
     </Navbar>
 
