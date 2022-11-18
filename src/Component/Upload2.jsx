@@ -181,7 +181,17 @@ function Upload2() {
   };
 
   return (
+
     <>
+    <style>
+      {
+        `
+        body{
+          background-color:#f1f1f1;
+        }
+        `
+      }
+    </style>
       {toogle && (
         <div
           style={{
@@ -190,6 +200,7 @@ function Upload2() {
             height: "100vh",
             alignItems: "center",
             backgroundImage: `url(${LoginForm})`,
+            
           }}
         >
           <div>
@@ -339,7 +350,7 @@ function Upload2() {
               left: "50%",
               justifyContent: "center",
               fontFamily: "Arial",
-              transform: "translate(-50%,20%)",
+              transform: "translate(-50%,20%)",backgroundColor:"#f1f1f1"
             }}
           >
             <div
@@ -351,36 +362,40 @@ function Upload2() {
                 borderRadius: "7px",
                 fontFamily: "arial",
                 fontWeight: "bold",
+               
               }}
             >
               {isSelected && (
                 <>
                   <Container>
-                    <form style={{ margin: "50px" }}>
+                    <form style={{ margin: "0px" }}>
                       <h2
                         style={{
                           textAlign: "left",
                           color: "#1e3796",
                           fontFamily: "arial",
                           fontWeight: "bold",
+                          marginBottom:"15px"
                         }}
                       >
-                        Upload File
+                        Upload Images
                       </h2>
                       <div
                         style={{
-                          padding: "15px",
-                          margin: "5px",
-                          backgroundColor: "#f1f1f1",
+                          padding: "12px",
+                          margin: "0px",
+                          backgroundColor: "#fff",
                           width: "auto",
                           height: "auto",
+                          boxShadow: "0px 0px 7px -1px #000000",
+                          borderRadius:"10px"
                         }}
                       >
                         <Row lg={12} style={{marginTop:"35px"}}>
                           <Col lg={12}>
                           <Stack
                               style={{
-                                marginBottom: "20px",
+                                marginBottom: "-10px",
                                 
                               }}
                             >
@@ -391,19 +406,18 @@ function Upload2() {
                                   fontFamily: "Arial",
                                   alignItems: "center",
                                   fontSize: "20px",
-                                  padding:"10px"
                                 }}
                               >
-                                <b
+                                <p
                                   style={{
                                     fontStyle: "arial",
                                     textAlign:"center",
-                                    paddingRight:"70px"
-
+                                    paddingRight:"35px",
+                                    fontSize:"22px"
                                   }}
                                 >
                                   Select the month to upload
-                                </b>
+                                </p>
                               </label>
                             </Stack>
                           
@@ -448,7 +462,7 @@ function Upload2() {
                               <lord-icon
                                 src="https://cdn.lordicon.com/xhcrhqyw.json"
                                 trigger="morph"
-                                colors="primary:#1e3796"
+                                colors="primary:#808080"
                                 style={{ width: "110px", height: "110px" }}
                               ></lord-icon>
                             </Stack>
@@ -462,7 +476,7 @@ function Upload2() {
                                   alignItems: "center",
                                   padding: "5px",
                                   justifyContent: "center",
-                                  width: "180px",
+                                  width: "170px",
                                   fontSize: "18px",
                                   border: "1px solid #1e3796",
                                   backgroundColor: "#1e3796",
@@ -482,11 +496,11 @@ function Upload2() {
                         <Row style={{ margin: "50px 50px" }}>
                           <Col
                             style={{
-                              border: "1px solid gray",
+                              border: "1px solid #cccccc",
                               height: "120px",
                               width: "250px",
                               margin: "10px",
-                              padding: "2vh",
+                              padding: "4vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
@@ -495,11 +509,11 @@ function Upload2() {
                           </Col>
                           <Col
                             style={{
-                              border: "1px solid gray",
+                              border: "1px solid #cccccc",
                               height: "120px",
                               width: "250px",
-                              margin: "10px",
-                              padding: "2vh",
+                              margin: "9px",
+                              padding: "3vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
@@ -509,15 +523,15 @@ function Upload2() {
                           </Col>
                           <Col
                             style={{
-                              border: "1px solid gray",
+                              border: "1px solid #cccccc",
                               height: "120px",
                               width: "250px",
                               margin: "10px",
-                              padding: "2vh",
+                              padding: "3vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
-                              You can upload phiotos that are .JPEG,or.PNG
+                              You can upload photos that are .JPEG,.JPG or.PNG
                             </p>
                           </Col>
                         </Row>
@@ -531,6 +545,9 @@ function Upload2() {
                               size="lg"
                               aria-labelledby="example-modal-sizes-title-lg"
                             >
+                              <Modal.Header closeButton>
+                                 <h3 style={{fontFamily:"arial",color:"#1e3796"}}>Upload Images</h3>
+                              </Modal.Header>
                               <Modal.Body>
                                 {preview.length < 1 && (
                                   <Container
@@ -776,34 +793,17 @@ function Upload2() {
                     style={{
                       height: "50vh",
                       verticalAlign: "center",
-                      marginTop: "50px",
+                      marginTop: "100px",
+                      backgroundColor:"#fff",padding:"55px",width:"800px",boxShadow: "0px 0px 7px -1px #000000",
+                      borderRadius:"10px"
                     }}
                   >
-                    {isUploaded && showToastSucc && (
-                      <Toast
-                        onClose={() => {
-                          setShowToastSucc(false);
-                        }}
-                        show={showToastSucc}
-                        className="d-block"
-                        bg="success"
-                        position="top-center"
-                        delay={4000}
-                        autohide
-                      >
-                        <Toast.Header>
-                          <strong className="me-auto">Images upload</strong>
-                          <small>just now</small>
-                        </Toast.Header>
-                        <Toast.Body>Images uploaded successfully</Toast.Body>
-                      </Toast>
-                    )}
-
+                 
                     <lord-icon
                       src="https://cdn.lordicon.com/hrqqslfe.json"
                       trigger="hover"
                       colors="primary:#109121,secondary:#ebe6ef"
-                      style={{ width: "100px", height: "100px" }}
+                      style={{ width: "100px", height: "100px",marginTop:"35px" }}
                     ></lord-icon>
                     <br></br>
 
@@ -819,7 +819,7 @@ function Upload2() {
                     <h2 style={{ color: "green" }}>{showError}</h2>
                     <br />
                     <h4>
-                      <a href="/upload1" style={{ fontFamily: "arial" }}>
+                      <a href="/upload2" style={{ fontFamily: "arial" }}>
                         <u>Click Here to Addmore</u>
                       </a>
                     </h4>
@@ -843,9 +843,32 @@ function Upload2() {
               )}
             </div>
           </div>
+          <div >
+          {isUploaded && showToastSucc && (
+                      <Toast
+                        onClose={() => {
+                          setShowToastSucc(false);
+                        }}
+                        style={{marginTop:"200px"}}
+                        show={showToastSucc}
+                        className="d-block"
+                        bg="success"
+                        position="top-left"
+                        delay={5000}
+                        autohide
+                      >
+                        <Toast.Header>
+                          <strong className="me-auto">Images upload</strong>
+                          <small>just now</small>
+                        </Toast.Header>
+                        <Toast.Body>Images uploaded successfully</Toast.Body>
+                      </Toast>
+                    )}
+          </div>
         </>
       )}
     </>
+    
   );
 }
 

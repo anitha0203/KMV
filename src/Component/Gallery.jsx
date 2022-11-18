@@ -33,7 +33,7 @@ function Gallery() {
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, 1800);
+        }, );
 
 
       }
@@ -56,6 +56,9 @@ function Gallery() {
     <>
     <style>
       {`
+      body{
+        background-color:#f1f1f1;
+      }
        .hoverimg:hover{
         cursor:pointer;
         box-shadow:8px 8px 5px 1px #cbcbcd;
@@ -74,11 +77,13 @@ function Gallery() {
 
     <div style={{marginBottom:"80px"}}>
       <Header1/>
-      {hasError && (
-        <p style={{ top: "50%", left: "50%", position: "absolute" ,color:"red",display:"flex"}}>
-          Something Went Wrong
-        </p>
-      )}
+      {hasError &&  <div style={{ top: "50%", left: "45%", position: "absolute",transform: "translate(-50%, -50%)"}}>
+          <h2 style={{fontFamily:"arial",color:"red"}}>Network Error....</h2>
+          <p style={{fontFamily:"arial",color:"red"}}>Please Refresh the Page....</p>
+          <Spinner animation="border" variant="danger" size="lg" />
+          
+        </div>}
+
       {loading && (
         <div style={{ top: "50%", left: "45%", position: "absolute",transform: "translate(-50%, -50%)"}}>
           <h1 style={{fontFamily:"arial"}}>Loading.....</h1>
@@ -87,11 +92,11 @@ function Gallery() {
         </div>
       )}
 
-      {!loading && (
+      {!loading && !hasError && (
 
           <div
-            className="container-fluid"
-
+            className="container"
+            style={{backgroundColor:"#fff"}}
           >
             <>
               {images.slice(0, visible).map((item) =>
