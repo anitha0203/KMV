@@ -20,7 +20,7 @@ function Gallery() {
     const fetchData = async () => {
       setHide(false);
       try {
-        const res = await axios.get("https://highwayproject.herokuapp.com");
+        const res = await axios.get("https://actions-to-drive.herokuapp.com");
         let imac =res.data;
         setImages(imac);
         if(images.length>0){
@@ -33,7 +33,7 @@ function Gallery() {
       } finally {
         setTimeout(() => {
           setLoading(false);
-        }, );
+        },);
 
 
       }
@@ -162,7 +162,7 @@ function Gallery() {
             {!hide && (
                 <div
                   className="mb-5"
-                  style={{ padding: "25px" }}
+                  style={{ padding: "55px" }}
                 >
                   <Button
                     onClick={loadMore}
@@ -178,6 +178,7 @@ function Gallery() {
 
       )}
     </div>
+    <div></div>
     <div>
       <Navbar fixed="bottom" className="justify-content-end" >
 <NavItem >

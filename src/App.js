@@ -8,6 +8,7 @@ import Gallery from './Component/Gallery';
 import Date from './Component/Date';
 import Upload2 from './Component/Upload2';
 import Delete from './Component/Delete';
+import All from './Component/All';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
       </Route>
       <Route path="/date">
       <Date/>
+      </Route>
+      <Route path="/All">
+      <All/>
       </Route>
         </Switch>
  

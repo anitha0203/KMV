@@ -73,7 +73,7 @@ function Body(props) {
                 style={{ marginLeft: "-5px"}}
               >
                 <Stack style={{ paddingLeft: "5px" }}>
-                  <div style={{ marginTop: "60px" }}>
+                  <div style={{ marginTop: "50px" }}>
                     <h2
                       style={{
                         color: "#1e3796",
@@ -84,6 +84,7 @@ function Body(props) {
                     >
                       Project Name
                     </h2>
+                    <hr style={{width:"300px",border:"1px solid #ccc"}}/>
                     <p style={lineStyle1}>
                       Construction of 4 lane Access Controlled New Greenfield
                       Highway Section of NH-365BG (Khammam-Devarapalle) of
@@ -104,6 +105,7 @@ function Body(props) {
                     >
                       Scope of Work
                     </h2>
+                   <hr style={{width:"300px",border:"1px solid #ccc"}}></hr> 
                     <p style={lineStyle1}>
                       Construction of 4 lane Access controlled Green Filed
                       highway with depressed median which includes Culverts,
@@ -383,68 +385,68 @@ function Body(props) {
                 </div>
               </Col>
             </Row>
-            <Row style={{ display: "flex",marginBottom: "20px" }}>
-              <Col style={{ flex: "2%", marginRight: "0px" }}>
+            <Row style={{ display: "flex" }}>
+              <Col style={{ flex: "2%" }}>
                 <div>
                   <div>
                     <h4 style={{ fontWeight: "bold", padding: "5px 55px" }}>Authority</h4>
                   </div>
                   <center>
                   <img src={require("../images/client.png")}
-                  style={{width:"80px", paddingBottom: "13px"}} alt="..."
+                  style={{width:"75px", paddingBottom: "1px 0px"}} alt="..."
                   ></img></center>
                   <div>
                     <p
-                      style={{ fontSize: "18px" }}
+                      style={{ fontSize: "18px",padding: "6px 0px" }}
                     >
                       National Highways Authority of India (NHAI)
                     </p>
                   </div>
                 </div>
               </Col>
-              <Col style={{ flex: "2%", marginRight: "10px" }}>
+              <Col style={{ flex: "2%"}}>
                 <div>
                   <div>
                     <h4 style={{ fontWeight: "bold", padding: "5px 55px" }}>Concessionaire</h4>
                   </div>
                   <center>
                   <img src={require("../images/person.png")}
-                  style={{width:"80px", padding: "10px 0px"}} alt="..."
+                  style={{width:"75px", padding: "2px 0px"}} alt="..."
                   ></img></center>
                   <div>
                     <p
-                      style={{ fontSize: "18px" }}
+                      style={{ fontSize: "18px",padding: "16px 0px"  }}
                     >
                       KMVPL Khammam Devarapalli Highway Private Limited
                     </p>
                   </div>
                 </div>
               </Col>
-              <Col style={{ flex: "2%", marginRight: "10px" }}>
-                <div style={{margin:"0px 00px"}}>
-                  <div style={{width:"auto"}}>
-                    <h4 style={{ fontWeight: "bold",padding: "1px 10px" }}>Length in KM</h4>
+              <Col style={{ flex: "2%" }}>
+                <div >
+                  <div>
+                    <h4 style={{ fontWeight: "bold",padding: "5px 35px" }}>Length in KM</h4>
                   </div>
                   <center>
                   <img src={require("../images/length.png")}
-                  style={{width:"75px", padding: "5px 0px"}} alt="..."
+                  style={{width:"75px", padding: "2px 0px"}} alt="..."
                   ></img></center>
                   <div>
-                    <p style={{ fontSize: "18px", padding: "15px 0px" }}>42.119 Km's</p>
+                    <p style={{ fontSize: "18px", padding: "15px 80px" }}>42.119 Km's</p>
                   </div>
                 </div>
               </Col>
-              <Col style={{ flex: "2%", marginRight: "10px" }}>
+              <Col style={{ flex: "2%", marginRight: "20px" }}>
                 <div>
-                  <div style={{width:"250px",textAlign:"center"}}>
-                    <h4 style={{ fontWeight: "bold",padding: "2px 1px 10px 50px" }}>O&M Period</h4>
+                  <div style={{width:"auto"}}>
+                    <h4 style={{ fontWeight: "bold",padding: "5px 35px" }}>O&M Period</h4>
                   </div>
                   <center>
                   <img src={require("../images/time.png")}
-                  style={{width:"70px", padding: "8px 1px"}} alt="..."
+                  style={{width:"75px", padding: "2px 0px"}} alt="..."
                   ></img></center>
                   <div>
-                    <p style={{ fontSize: "18px" }}>15 years</p>
+                    <p style={{ fontSize: "18px",paddingTop:"10px" }}>15 years</p>
                   </div>
                 </div>
               </Col>
@@ -458,7 +460,7 @@ function Body(props) {
          
          <div className="container-fluid" style={{marginBottom:"20px",display:"-ms-flexbox"}}>
          <div style={{backgroundImage:`url(${PatternImg})`, height: "400px", marginTop: "50px"}}>
-           <a href="/Gallery" style={{padding:"0",margin:"0"}}> <button className="btn primary" style={{position: "relative",top:"45%", left: "1%", alignItems: "center", justifyContent:"center", border:"none", color: "white", fontFamily:"Arial", backgroundColor: "#1e3796"}}>Project Progress Photos</button></a>
+           <a href="/Gallery" style={{padding:"0",margin:"0"}}> <button className="btn primary" style={{position: "relative",top:"45%", left: "1%", alignItems: "center", justifyContent:"center", border:"none", color: "white", fontFamily:"Arial", backgroundColor: "#1e3796"}}>Project Photos</button></a>
           
            {/* <div className="container-fluid" style={{marginTop:"80px"}}>
            <div className="imgbox1"style={{width:"100%",padding:"10px"}} >

@@ -11,7 +11,6 @@ import {
   Modal,
   Row,
   Stack,
-  Toast,
 } from "react-bootstrap";
 import axios from "axios";
 import Header from "./Header";
@@ -67,7 +66,7 @@ function Upload2() {
   const [dummy, setDummy] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [showModal, setShowModal] = useState(false);
-  const [showToastSucc, setShowToastSucc] = useState(false);
+ //const [showToastSucc, setShowToastSucc] = useState(false);
   const [images1, setImages1] = useState([]);
 
   const onChange1 = (e) => {
@@ -164,7 +163,7 @@ function Upload2() {
         setIsUploaded(true);
 
         setLoading(false);
-        setShowToastSucc(true);
+       // setShowToastSucc(true);
       })
       .catch((err) => {
         if (err.result) {
@@ -331,7 +330,7 @@ function Upload2() {
       )}
 
       {/* uploadFile Starts */}
-
+ 
       {!toogle && (
         <>
           <style>
@@ -378,7 +377,7 @@ function Upload2() {
                           marginBottom:"15px"
                         }}
                       >
-                        Upload Images
+                        Upload Pictures
                       </h2>
                       <div
                         style={{
@@ -412,11 +411,11 @@ function Upload2() {
                                   style={{
                                     fontStyle: "arial",
                                     textAlign:"center",
-                                    paddingRight:"35px",
+                                    paddingRight:"0px",
                                     fontSize:"22px"
                                   }}
                                 >
-                                  Select the month to upload
+                                  Desired Month To Upload Pictures
                                 </p>
                               </label>
                             </Stack>
@@ -531,7 +530,7 @@ function Upload2() {
                             }}
                           >
                             <p style={{ width: "200px" }}>
-                              You can upload photos that are .JPEG,.JPG or.PNG
+                              You can upload pictures that are .JPEG,.JPG or.PNG
                             </p>
                           </Col>
                         </Row>
@@ -844,7 +843,7 @@ function Upload2() {
             </div>
           </div>
           <div >
-          {isUploaded && showToastSucc && (
+          {/* {isUploaded && showToastSucc && (
                       <Toast
                         onClose={() => {
                           setShowToastSucc(false);
@@ -863,7 +862,7 @@ function Upload2() {
                         </Toast.Header>
                         <Toast.Body>Images uploaded successfully</Toast.Body>
                       </Toast>
-                    )}
+                    )} */}
           </div>
         </>
       )}
