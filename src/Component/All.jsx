@@ -1,4 +1,3 @@
-import { Box } from "@mui/system";
 import React, {  useState } from "react";
 import {
   Button,
@@ -11,17 +10,12 @@ import {
   NavItem,
   Nav,
   Spinner,
-  Toast,
 } from "react-bootstrap";
 import Header from "./Header";
 import LoginForm from "../images/Login_3.jpg";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs from "dayjs";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import TextField from "@mui/material/TextField";
+import DatePicker from "react-datepicker";
 
 
 function All() {
@@ -57,7 +51,6 @@ function All() {
   const [indexe, setIndexe] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
 
-  const [showToastSucc, setShowToastSucc] = useState(false);
   const [images1, setImages1] = useState([]);
   const [images, setImages] = useState([]);
 
@@ -182,10 +175,6 @@ function All() {
     console.log("imagions data1-=-", imageSelected.length);
     const formData = new FormData();
     let store = new Date();
-    if (dummy) {
-      const { $d } = startDate;
-      store = $d;
-    }
 
     let month = String(store.getMonth() + 1).padStart(2, "0");
     let day = String(store.getDate()).padStart(2, "0");
@@ -207,7 +196,6 @@ function All() {
         setOnSelect(false);
         setLoading(false);
         console.log(fileRes)
-         setShowToastSucc(true);
          setPreview([]);
       })
       .catch((err) => {
@@ -266,13 +254,16 @@ function All() {
               body{
                 background-color:#f1f1f1;
               }
+              .boxx:hover {
+                  box-shadow: 5px  5px 20px #ccc;
+              }
               `}
           </style>
       <Header />
       {/* Loginpage */}
-      <div className="container-fluid">
+      <div className="container-fluid-s">
         {isLogin && (
-          <div
+          <div 
             style={{
               display: "flex",
               justifyContent: "center",
@@ -283,24 +274,9 @@ function All() {
           >
             <div>
               <form onSubmit={submitHandler} style={{ width: "400px" }}>
-                <Box
-                  display="flex"
-                  flexDirection={"column"}
-                  maxWidth={400}
-                  alignItems="center"
-                  justifyContent="center"
-                  margin="auto"
-                  padding={3}
-                  borderRadius={5}
-                  backgroundColor={"#ccc"}
-                  sx={{
-                    ":hover": {
-                      boxShadow: "5px  5px 20px #ccc",
-                    },
-                  }}
-                >
+              <div className="boxx" style={{border: "1px solid #ccc", backgroundColor: "#ccc",paddingTop: "3vh",paddingBottom: "3vh",borderRadius: "25px",paddingLeft: "1vh"}}>
                   <h2 style={{ padding: 20, fontFamily: "arial" }}>Login</h2>
-                  <div className="form-group">
+                  <div className="form-group" style={{marginLeft: "8vh"}}>
                     <Row>
                       <label
                         style={{
@@ -337,7 +313,7 @@ function All() {
                     )}
                   </div>
 
-                  <div className="form-group">
+                  <div className="form-group" style={{marginLeft: "8vh"}}>
                     <Row>
                       <label
                         style={{
@@ -387,7 +363,7 @@ function All() {
                   >
                     Login
                   </Button>
-                </Box>
+                </div>
               </form>
             </div>
           </div>
@@ -406,9 +382,9 @@ function All() {
                   <Button
                     style={{
                      flex:"1",
-                      height: "calc(10vh - 40px)",
+                      height: "8vh",
                       width: "300px",
-                      backgroundColor: "#ff80b3",
+                      backgroundColor: "#117a8b",
                       position: "sticky",
                       top:"50%",
                       fontFamily: "arial",
@@ -430,9 +406,9 @@ function All() {
                   <Button
                     style={{
                       flex:"1",
-                      height: "calc(10vh - 40px)",
+                      height: "8vh",
                       width: "300px",
-                      backgroundColor: "#ff80b3",
+                      backgroundColor: "#117a8b",
                       position: "sticky",
                       top:"50%",
                       fontFamily: "arial",
@@ -523,32 +499,17 @@ function All() {
                                 </p>
                               </label>
                             </Stack>
-
-                            <Stack>
-                              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <div>
-                                  <div>
-                                    <DatePicker
-                                      views={["year", "month"]}
-                                      minDate={dayjs("2019-03-01")}
-                                      maxDate={dayjs("2024-12-01")}
-                                      value={startDate}
-                                      onChange={(startDate) => {
+                            <Stack direction="horizontal">
+                              <i className="fa fa-calendar" aria-hidden="true" style={{position: "absolute", zIndex: "1",marginTop: "1vh",marginLeft: "9vh"}}></i>
+                              <div>
+                              <DatePicker selected={startDate} value={startDate} onChange={(startDate) => {
                                         setStartDate(startDate);
                                         setDummy(true);
                                         console.log("valueb:----", startDate);
-                                      }}
-                                      renderInput={(params) => (
-                                        <TextField
-                                          {...params}
-                                          helperText={null}
-                                        />
-                                      )}
-                                    />
-                                  </div>
-                                </div>
-                              </LocalizationProvider>
+                                      }} style={{position:"absolute"}}/>
+                              </div>         
                             </Stack>
+                            
                           </Col>
                         </Row>
 
@@ -848,26 +809,7 @@ function All() {
 
                   {isUploaded && (
                 <>
-                {isUploaded && showToastSucc && (
-                      <Toast
-                        onClose={() => {
-                          setShowToastSucc(false);
-                        }}
-                        style={{marginTop:"50px"}}
-                        show={showToastSucc}
-                        className="d-block"
-                        bg="success"
-                        position="top-right"
-                        delay={3000}
-                        autohide
-                      >
-                        <Toast.Header>
-                          <strong className="me-auto">Images upload</strong>
-                          <small>just now</small>
-                        </Toast.Header>
-                        <Toast.Body>Images uploaded successfully</Toast.Body>
-                      </Toast>
-                    )} 
+    
                 <div
             className="container"
             style={{
