@@ -398,10 +398,10 @@ function All() {
       {/* HomeStarts   */}
 
       {home && (
-        <div className="container-fluid" style={{ marginTop: "60px" }}>
-          <Row md={12} style={{ height: "auto",marginTop:"50px" }}>
-            <Col md={3}style={{marginTop:"30px"}} >
-              <Stack gap={3} >
+        <div className="container-fluid" style={{ marginTop: "0px" }}>
+          <Row md={12} style={{ height: "auto",marginTop:"0px" }}>
+            <Col md={3}style={{marginTop:"30px",paddingTop:"60px"}} >
+              <Stack>
                 <div style={{marginTop:"10px"}}>
                   <Button
                     style={{
@@ -460,7 +460,7 @@ function All() {
                  </div>
                 )} 
            
-            <Col md={8} style={{marginTop:"30px"}}>
+            <Col md={8} style={{marginTop:"30px",paddingTop:"60px"}}>
              
 
               {/* Upload Layer */}

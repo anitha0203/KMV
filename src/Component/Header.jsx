@@ -13,6 +13,11 @@ function Header() {
               alt="React Bootstrap logo"
             />{'  '} <span style={{fontSize:"20px",fontFamily: "arial",fontWeight:"bold", paddingLeft: "10px"}}>Khammam Devarapalli Highway Private Ltd</span></h3> </Navbar.Brand>
     <a href="/home"> </a>
+    <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+          <i style={{border:"1px solid black",padding:'8px',borderRadius:"15px"}} className="fa-solid fa-user"></i>
+          </Navbar.Text>
+        </Navbar.Collapse>
     </Navbar>
 
     </div>
