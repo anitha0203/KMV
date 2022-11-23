@@ -45,7 +45,7 @@ function All() {
   const [fileRes, setFileRes] = useState("");
   const [preview, setPreview] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [dummy, setDummy] = useState(false);
+  
   const [onSelect, setOnSelect] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [indexe, setIndexe] = useState(0);
@@ -504,7 +504,7 @@ function All() {
                               <div>
                               <DatePicker selected={startDate} value={startDate} onChange={(startDate) => {
                                         setStartDate(startDate);
-                                        setDummy(true);
+                                        
                                         console.log("valueb:----", startDate);
                                       }} style={{position:"absolute"}}/>
                               </div>         

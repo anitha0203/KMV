@@ -96,7 +96,7 @@ function Gallery() {
 
           <div
             className="container"
-            style={{backgroundColor:"#fff"}}
+            style={{backgroundColor:"#f1f1f1"}}
           >
             <>
               {images.slice(0, visible).map((item) =>

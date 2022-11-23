@@ -2,6 +2,20 @@ import React from "react";
 import {  Navbar } from "react-bootstrap";
 function Header() {
   return (
+    <>
+    <style>
+{
+  `
+  @media screen and (min-width: 560px) {
+   
+     h3{
+font-size:"16px"
+     }
+    
+  }
+  `
+}
+    </style>
     <div>
       <Navbar fixed="top" bg="light"  expand="lg" style={{height:"60px",backgroundColor:"white"}}>
      
@@ -21,6 +35,7 @@ function Header() {
     </Navbar>
 
     </div>
+    </>
   );
 }
 
