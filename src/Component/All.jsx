@@ -14,10 +14,11 @@ import {
   Tooltip,
 } from "react-bootstrap";
 import Header from "./Header";
-import LoginForm from "../images/Login_3.jpg";
+import LoginForm from "../images/Login_4.png";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import DatePicker from "react-datepicker";
+import { useEffect } from "react";
 
 
 function All() {
@@ -74,6 +75,10 @@ function All() {
     }
   };
 
+  useEffect(() => {
+
+  }, [])
+  
   
     const fetchData = async () => {
         setHide(false);
@@ -232,7 +237,7 @@ function All() {
         console.log("deleted", indx);
         console.log(result);
         setLoading(false);
-        //window.location.reload()
+      //  window.location.reload()
       })
       .catch((err) => {
         if (err.result) {
@@ -256,7 +261,7 @@ function All() {
                 background-color:#f1f1f1;
               }
               .boxx:hover {
-                  box-shadow: 5px  5px 20px #ccc;
+                  box-shadow: 5px  5px 10px #ccc;
               }
               `}
           </style>
@@ -675,10 +680,9 @@ function All() {
                                         transform: "translate(-50%,50%)",
                                       }}
                                     >
-
-                                        <i
-                                          onClick={(e) => {
-                                            e.preventDefault();
+                                    
+                                        <i onClick={(e) => {
+                                           e.preventDefault();
                                             console.log(
                                               "deleted file num",
                                               index
@@ -688,6 +692,7 @@ function All() {
                                             );
                                             setPreview(se);
                                             console.log(se);
+                                           
                                           }}
                                           className="fa-solid fa-xmark"
                                           style={{
@@ -846,7 +851,8 @@ function All() {
               left: "50%",
               justifyContent: "center",
               fontFamily: "Arial",
-              transform: "translate(-50%,20%)"
+              transform: "translate(-50%,20%)",
+              
             }}
           >
                   <div
@@ -855,7 +861,7 @@ function All() {
                       verticalAlign: "center",
                       marginTop: "0px",
                       backgroundColor:"#fff",padding:"5px",width:"800px",boxShadow: "0px 0px 7px -1px #000000",
-                      borderRadius:"10px"
+                      borderRadius:"10px",marginBottom:"80px"
                     }}
                   >
                  
@@ -863,7 +869,7 @@ function All() {
                       src="https://cdn.lordicon.com/hrqqslfe.json"
                       trigger="hover"
                       colors="primary:#109121,secondary:#ebe6ef"
-                      style={{ width: "100px", height: "100px",marginTop:"35px" }}
+                      style={{ width: "100px", height: "100px",marginTop:"55px" }}
                     ></lord-icon>
                     <br></br>
 
@@ -878,6 +884,13 @@ function All() {
                     </h2>
                   </div>
                   </div>
+                  <div>
+      <Navbar fixed="bottom" className="justify-content-end" >
+<NavItem >
+<Nav.Link  href="/home"><Button  style={{color:"white",borderRadius:"5%",backgroundColor:"#1e3796",fontFamily:"arial"}}>Go to Home</Button></Nav.Link>
+</NavItem>
+     </Navbar>
+    </div>
                 </>
               )}
 
@@ -968,6 +981,7 @@ function All() {
                               return (
                                 <>
                                   <Container >
+                                  {pics.Imageurls.length >0 && 
                                     <h4
                                       key={indxc}
                                       style={{
@@ -981,8 +995,8 @@ function All() {
                                     >
                                       {pics.monthname}
                                     </h4>
-
-                                    {pics.Imageurls.length === 0 && (
+                            }
+                                    {/* {pics.Imageurls.length === 0 && (
                                       <p
                                         style={{
                                           color: "red",
@@ -994,7 +1008,7 @@ function All() {
                                       >
                                         No images uploaded in this month
                                       </p>
-                                    )}
+                                    )} */}
 
                                     <Row>
                                       {pics.Imageurls.map((imgs, indx) => (
