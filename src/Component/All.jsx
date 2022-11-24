@@ -45,7 +45,7 @@ function All() {
   const [fileRes, setFileRes] = useState("");
   const [preview, setPreview] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+  const [dummy, setDummy] = useState(false);
   const [onSelect, setOnSelect] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [indexe, setIndexe] = useState(0);
@@ -173,15 +173,18 @@ function All() {
   
     //setImageSelected(imagions);
     console.log("imagions data1-=-", imageSelected.length);
+    
     const formData = new FormData();
     let store = new Date();
-
+    if (dummy) {
+       store = startDate;
+    }
     let month = String(store.getMonth() + 1).padStart(2, "0");
     let day = String(store.getDate()).padStart(2, "0");
     let year = store.getFullYear();
     let output = year + "-" + month + "-" + day;
-    console.log(output);
-
+   
+   console.log("goingdate",output);
     formData.append("Date", output);
 
     Array.from(imageSelected).forEach((item) => {
@@ -447,6 +450,7 @@ function All() {
                   
                 
                   {onSelect && !isUploaded &&(
+                    <>
                     <div
                       className="containers"
                       style={{
@@ -456,6 +460,7 @@ function All() {
                         justifyContent: "center",
                         fontFamily: "Arial",
                         transform: "translate(-50%,5%)",
+                        
                       }}
                     >
 
@@ -469,6 +474,7 @@ function All() {
                           boxShadow: "0px 0px 7px -1px #000000",
                           borderRadius: "10px",
                           position: "relative",
+                          marginBottom:"90px"
                         }}
                       >
                         <Row lg={12} style={{ marginTop: "35px" }}>
@@ -502,9 +508,9 @@ function All() {
                             <Stack direction="horizontal">
                               <i className="fa fa-calendar" aria-hidden="true" style={{position: "absolute", zIndex: "1",marginTop: "1vh",marginLeft: "9vh"}}></i>
                               <div>
-                              <DatePicker selected={startDate} value={startDate} onChange={(startDate) => {
-                                        setStartDate(startDate);
-                                        
+                              <DatePicker selected={startDate} value={startDate} onChange={(start) => {
+                                        setStartDate(start);
+                                        setDummy(true);
                                         console.log("valueb:----", startDate);
                                       }} style={{position:"absolute"}}/>
                               </div>         
@@ -612,7 +618,27 @@ function All() {
                           </Col>
                         </Row>
                       </div>
+                      
                     </div>
+                      <div>
+                      <Navbar fixed="bottom" className="justify-content-end">
+                        <NavItem>
+                          <Nav.Link href="/home">
+                            <Button
+                              style={{
+                                color: "white",
+                                borderRadius: "5%",
+                                backgroundColor: "#1e3796",
+                                fontFamily: "arial",
+                              }}
+                            >
+                              Go to Home
+                            </Button>
+                          </Nav.Link>
+                        </NavItem>
+                      </Navbar>
+                    </div>
+                    </>
                   )}
 
                   {!onSelect && preview.length > 0  && !isUploaded && !loading&&  (
@@ -623,8 +649,8 @@ function All() {
                             return (
                               <>
                                 <Col md={3}>
-                                  <div className="container">
-                                    <img
+                                  <div className="container"  key={index}>
+                                    <img key={index}
                                       style={{
                                         width: "150px",
                                         height: "100px",
@@ -633,7 +659,7 @@ function All() {
                                       }}
                                       src={itms.url}
                                       alt={"image-" + index}
-                                      key={index}
+                                     
                                     />
 
                                     <div
@@ -647,7 +673,7 @@ function All() {
                                         transform: "translate(-50%,50%)",
                                       }}
                                     >
-                                      <div>
+
                                         <i
                                           onClick={(e) => {
                                             e.preventDefault();
@@ -670,7 +696,7 @@ function All() {
                                             borderRadius: "1.5px",
                                           }}
                                         ></i>
-                                      </div>
+                                      
                                     </div>
                                   </div>
                                 </Col>

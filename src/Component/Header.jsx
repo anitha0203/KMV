@@ -1,25 +1,27 @@
 import React from "react";
-import {  Navbar } from "react-bootstrap";
+import {  Container, Navbar, Row } from "react-bootstrap";
 function Header() {
   return (
     <>
     <style>
 {
   `
-  @media screen and (min-width: 560px) {
-   
-     h3{
-font-size:"16px"
-     }
+  body{
+    margin:0px;
+    padding:0px;
+  }
+  @media screen and (max-width: 420px) {
+   background-color:green;
+ 
     
   }
   `
 }
     </style>
-    <div>
-      <Navbar fixed="top" bg="light"  expand="lg" style={{height:"60px",backgroundColor:"white"}}>
-     
-        <Navbar.Brand href="/home" style={{verticalAlign:"middle",}}> <h3><img
+    <Row>
+      <Navbar fixed="top" bg="light"  expand="lg" style={{height:"60px",backgroundColor:"white",margin:"0px"}}>
+     <Container fluid>
+        <Navbar.Brand href="/home" style={{verticalAlign:"middle"}}> <h3 ><img
              style={{verticalAlign:"middle",float:"left"}}
              src={require("../images/kmvlogo.png")}
               width="50"
@@ -32,9 +34,10 @@ font-size:"16px"
           <i style={{border:"1px solid black",padding:'8px',borderRadius:"15px"}} className="fa-solid fa-user"></i>
           </Navbar.Text>
         </Navbar.Collapse>
+        </Container>
     </Navbar>
 
-    </div>
+    </Row>
     </>
   );
 }

@@ -3,7 +3,6 @@ import './App.css';
 import Main from './Component/Main';
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 import Gallery from './Component/Gallery';
-import Delete from './Component/Delete';
 import All from './Component/All';
 
 function App() {
@@ -19,9 +18,6 @@ function App() {
       </Route>
       <Route path="/Gallery">
       <Gallery/>
-      </Route>
-      <Route path="/delete">
-      <Delete/>
       </Route>
       <Route path="/All">
       <All/>
