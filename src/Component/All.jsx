@@ -37,7 +37,6 @@ function All() {
     vpass: "123456",
   });
 
-  const [isSelected, setIsSelected] = useState(true);
   const [imageSelected, setImageSelected] = useState([]);
   const [isUploaded, setIsUploaded] = useState(false);
   const [butto, setButto] = useState(false);
@@ -47,8 +46,6 @@ function All() {
   const [loading, setLoading] = useState(false);
   const [dummy, setDummy] = useState(false);
   const [onSelect, setOnSelect] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
-  const [indexe, setIndexe] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
 
   const [images1, setImages1] = useState([]);
@@ -212,7 +209,6 @@ function All() {
         }
       });
 
-    setIsSelected(false);
   };
 
   //Functionality for loading of images months
@@ -227,7 +223,7 @@ function All() {
   };
 
   const deletea = (indx) => {
-    setIndexe(indx);
+    
     axios
       .delete(`https://actions-to-drive.herokuapp.com/Delete/${indx}`)
       .then((result) => {
@@ -247,7 +243,7 @@ function All() {
       });
 
     console.log(indx);
-    setIsOpen(true);
+    
   };
 
   return (
