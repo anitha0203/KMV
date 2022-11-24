@@ -10,7 +10,7 @@ function Gallery() {
   const [images, setImages] = useState("");
   const [visible, setVisible] = useState(2);
   const [isOpen, setIsOpen] = useState(false);
-  const [indexe, setIndexe] = useState(0);
+  //const [indexe, setIndexe] = useState(0);
   const [hide, setHide] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -105,6 +105,9 @@ function Gallery() {
                     <>
                     <Container>
 
+                       
+                       {
+                        pics.Imageurls.length>0 && 
                         <h4
                           style={{
                             marginBottom: "25px",
@@ -116,14 +119,14 @@ function Gallery() {
                         >
                           {pics.monthname}
                         </h4>
-
+                }
 
                    
-                      {pics.Imageurls.length === 0 && <p style={{color:"red",fontFamily:"arial",fontSize:"17px",textAlign:"left",padding:"7px"}}>No images uploaded in this month</p>}
+                      {/* {pics.Imageurls.length === 0 && <p style={{color:"red",fontFamily:"arial",fontSize:"17px",textAlign:"left",padding:"7px"}}>No images uploaded in this month</p>} */}
                       
                       <Row>
                         {pics.Imageurls.map((imgs, indx) => (
-                        
+                        <>
                           <Col xl={3}>
                             <center>
                                 <img
@@ -131,25 +134,27 @@ function Gallery() {
                                   style={{height:"200px",width:"300px",margin:"10px"}}
                                   alt="not found"
                                   src={imgs.src}
-                                  key={indexe}
+                                  key={imgs.indx}
                                   onClick={() => {
-                                    setIndexe(indx);
+                                   // setIndexe(indx);
                                     console.log(indx)
                                     setIsOpen(true);
                                   }}
 
                                   />
 
-                              <ReactImageCarouselViewer
-                                  open={isOpen}
-                                  onClose={() =>{ setIsOpen(false);console.log(indx)}}
-                                  images={pics.Imageurls}
-                                  startIndex={indexe}
-
-                                />
+                              
                                   </center>
                           </Col>
+                        <ReactImageCarouselViewer
+                        key={indx}
+                        open={isOpen}
+                        onClose={() =>{ setIsOpen(false);console.log(indx)}}
+                        images={pics.Imageurls}
+                        startIndex={pics.indx}
                         
+                      />
+                      </>
                         ))}
                         </Row>
                       </Container>

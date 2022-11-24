@@ -10,6 +10,8 @@ import {
   NavItem,
   Nav,
   Spinner,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import Header from "./Header";
 import LoginForm from "../images/Login_3.jpg";
@@ -378,6 +380,7 @@ function All() {
             <Col md={3}style={{marginTop:"30px",paddingTop:"60px"}} >
               <Stack>
                 <div style={{marginTop:"10px"}}>
+                  <OverlayTrigger placement="bottom" overlay={<Tooltip id="tooltip-disabled">Upload photos</Tooltip>}>
                   <Button
                     style={{
                      flex:"1",
@@ -399,9 +402,11 @@ function All() {
                     {" "}
                     <i className="fa fa-upload" aria-hidden="true"></i> Upload
                   </Button>
+              </OverlayTrigger>
                 </div>
 
                 <div style={{margin:"10px"}}>
+                <OverlayTrigger placement="bottom" overlay={<Tooltip id="tooltip-disabled">Delete photos</Tooltip>}>
                   <Button
                     style={{
                       flex:"1",
@@ -417,6 +422,7 @@ function All() {
                   >
                     <i  className="fa fa-trash" aria-hidden="true"></i> Delete
                   </Button>
+                  </OverlayTrigger>
                 </div>
               </Stack>
             </Col>

@@ -37,6 +37,7 @@ function Body() {
       },
       body{
         font-family: Arial;
+        width:"100%"
       }
       `}
       </style>
@@ -50,6 +51,7 @@ function Body() {
               marginTop: "70px",
               textAlign: "left",
               padding: "0",
+              width:"100%"
             }}
           >
             <div>
@@ -122,7 +124,7 @@ function Body() {
               backgroundImage: `url(${carouselImage})`,
               width: "100%",
               height: "500px",
-              fontSize: "18px",
+              fontSize: "18px",margin:"0px"
             }}
           ></div>
           <div className="container">
