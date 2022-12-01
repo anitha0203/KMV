@@ -108,6 +108,7 @@ function Body() {
             </div>
           </div>
           <div
+          className="d-block w-100"
             style={{
               background: "white repeat fixed",
 
@@ -123,16 +124,15 @@ function Body() {
                 fontFamily: "Arial",
                 textAlign: "center",
                 backgroundColor: "#fff",
-                padding: "20px 0px 20px 20px",
                 marginBottom: "30px",
                 marginTop: "60px",
                 justifyContent:"center",
-                marginLeft:"45px"
+                
               }}
             >
-              <Row className="justify-content-md-center">
+              <Row className="justify-content-md-center" >
                 <Col>
-                  <div style={{width:"250px"}}>
+                  <div>
                     <div>
                       <h4 style={{ fontWeight: "bold",justifyContent:"center",height:"45px" }}>
                         Pavement Classification
@@ -145,8 +145,8 @@ function Body() {
                         alt="..."
                       ></img>
                     </center>
-                    <div>
-                      <p style={{ fontSize: "18px", padding: "1px 0px" ,textAlign:"center"}}>
+                    <div style={{justifyContent:"center"}}>
+                      <p style={{ fontSize: "18px", padding: "5px 20px",textAlign:"center"}}>
                         Main Carriage way is Flexible and Toll Plaza is with
                         Rigid Pavement
                       </p>
@@ -154,7 +154,7 @@ function Body() {
                   </div>
                 </Col>
                 <Col>
-                  <div style={{width:"250px"}}>
+                  <div >
                     <div>
                     <h4
                       style={{
@@ -173,14 +173,14 @@ function Body() {
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px", padding: "23px 1px",textAlign:"center" }}>
+                      <p style={{ fontSize: "18px",  padding: "5px 75px",textAlign:"center" }}>
                         24-Feb-2022
                       </p>
                     </div>
                   </div>
                 </Col>
-                <Col >
-                  <div style={{width:"250px"}}>
+                <Col style={{justifyContent:"center"}} >
+                  <div >
                     <h4
                       style={{
                         fontWeight: "bold",
@@ -197,17 +197,17 @@ function Body() {
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px", padding: "25px 0px",textAlign:"center" }}>
+                      <p style={{ fontSize: "18px", padding: "5px 85px",textAlign:"center" }}>
                         730 Days / 2 Years
                       </p>
                     </div>
                   </div>
                 </Col>
                 <Col >
-                  <div style={{width:"250px"}}>
+                  <div >
                     <h4
                       style={{
-                        fontWeight: "bold",height:"45px"
+                        fontWeight: "bold", padding: "5px 55px",height:"45px"
                         
                       }}
                     >
@@ -230,7 +230,7 @@ function Body() {
               </Row>
               <Row  className="justify-content-md-center">
                 <Col >
-                  <div style={{width:"250px"}}>
+                  <div >
                     <div>
                       <h4 style={{ fontWeight: "bold", padding: "5px 55px",height:"45px" }}>
                         Authority
@@ -251,7 +251,7 @@ function Body() {
                   </div>
                 </Col>
                 <Col >
-                  <div style={{width:"250px"}}>
+                  <div >
                     <div>
                       <h4 style={{ fontWeight: "bold", padding: "5px" ,height:"45px"}}>
                         Concessionaire
@@ -272,7 +272,7 @@ function Body() {
                   </div>
                 </Col>
                 <Col >
-                  <div style={{width:"250px"}}>
+                  <div >
                     <div>
                       <h4 style={{ fontWeight: "bold", padding: "5px",height:"45px" }}>
                         Length in KM
@@ -293,7 +293,7 @@ function Body() {
                   </div>
                 </Col>
                 <Col >
-                  <div style={{width:"250px"}}>
+                  <div >
                     <div>
                       <h4 style={{ fontWeight: "bold", padding: "5px 35px",height:"45px" }}>
                         O&M Period
