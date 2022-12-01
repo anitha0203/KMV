@@ -17,7 +17,7 @@ function Body() {
     paddingRight: "20px",
   };
   return (
-    <div className="container-fluids" style={{ margin: "0px" }}>
+    <div className="container-fluid" style={{ margin: "0px" }}>
       <style>
         {`
       .card-show:hover{
