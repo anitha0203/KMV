@@ -7,12 +7,12 @@ import Header from "./Header";
 function Main() {
   return (
     <div>
-      <div>
+      
         <Header />
         <Carousels/>
         <Body />
         <Footer />
-      </div>
+      
     </div>
   );
 }

@@ -75,9 +75,6 @@ function All() {
     }
   };
 
-  useEffect(() => {
-
-  }, [])
   
   
     const fetchData = async () => {
@@ -107,7 +104,33 @@ function All() {
            setLoading(false);
          }
     };
-    
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+        setHide(false);
+        try {
+          const res = await axios.get("https://actions-to-drive.herokuapp.com");
+          let imac =res.data;
+          setImages(imac);
+          if(images.length>0){
+            console.log(images.length);
+              setLoading(false);
+          }
+          console.log("These are get data",imac);
+        } catch (err) {
+          setHasError(true);
+        } finally {
+          setTimeout(() => {
+            setLoading(false);
+          },);
+  
+  
+        }
+      };
+        fetchData();
+    },[images.length]);
+ 
  
 
   const onChange1 = (e) => {
@@ -224,7 +247,7 @@ function All() {
     setVisible((prevState) => prevState + 1);
     console.log(images.length);
     console.log("visible",visible);
-    if (visible>=images.length) {
+    if (visible===images.length) {
       setHide(false);
     } 
   };
@@ -259,6 +282,7 @@ function All() {
             {`
               body{
                 background-color:#f1f1f1;
+                width:"960px"
               }
               .boxx:hover {
                   box-shadow: 5px  5px 10px #ccc;
@@ -659,10 +683,10 @@ function All() {
                                   <div className="container"  key={index}>
                                     <img key={index}
                                       style={{
-                                        width: "150px",
+                                        width: "180px",
                                         height: "100px",
                                         margin: "10px",
-                                        
+                                        visibility:"hidden"
                                       }}
                                       src={itms.url}
                                       alt={"image-" + index}
@@ -674,7 +698,7 @@ function All() {
                                         position: "absolute",
                                         top: "-2%",
                                         right: "31%",
-
+                                        display:"none",
                                         zIndex: "1",
                                         cursor: "pointer",
                                         transform: "translate(-50%,50%)",

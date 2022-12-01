@@ -5,6 +5,10 @@
 
 body{
   font-family: 'NeoSansStd';
+  width:100%;
+}
+::-webkit-scrollbar{
+  display:none;
 }
 
 .app {

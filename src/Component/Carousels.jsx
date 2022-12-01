@@ -4,9 +4,10 @@ import  { Tooltip,OverlayTrigger,Button } from 'react-bootstrap';
 
 
 function Carousels() {
+
   return (
-    <div>
-      <div style={{ position: "relative", width: "Auto" }}>
+   
+      <div style={{ position: "relative", width: "100%" }}>
         <img
           className="d-block w-100"
           src={require("../images/MainBanner.jpg")}
@@ -18,7 +19,7 @@ function Carousels() {
         >
           <OverlayTrigger  placement="right" overlay={<Tooltip id="tooltip-disabled">project photos</Tooltip>}>
       
-      <Button
+        <Button
             className="btn primary btn-inlineblock"
             style={{
               position: "absolute",
@@ -37,11 +38,11 @@ function Carousels() {
             Project Photos
           </Button>
       
-    </OverlayTrigger>
+       </OverlayTrigger>
          
         </a>
       </div>
-    </div>
+    
   );
 }
 
