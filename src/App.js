@@ -4,13 +4,14 @@ import Main from './Component/Main';
 import {BrowserRouter,Route,Switch} from "react-router-dom";
 import Gallery from './Component/Gallery';
 import All from './Component/All';
+import NoComponent from './Component/NoComponent';
 
 function App() {
   return (
     <div className="App">
      <BrowserRouter>
     <Switch>
-    <  Route exact path="/">
+    <Route exact path="/">
       <Main/>
       </Route>
       <Route path="/home">
@@ -22,6 +23,7 @@ function App() {
       <Route path="/All">
       <All/>
       </Route>
+      <Route path="*" component={NoComponent}/>
         </Switch>
  
     </BrowserRouter>

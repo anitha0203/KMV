@@ -320,14 +320,15 @@ function Body() {
       )}
 
       <div
-        className="container-fluids"
-        style={{ marginBottom: "20px", display: "flexbox" }}
+       
+        style={{margin:"0px 0px 20px 0px" ,padding:"0px"}}
       >
         <div
           style={{
             backgroundImage: `url(${PatternImg})`,
             height: "400px",
-            marginTop: "50px",
+            margin: "50px 0px 0px 0px",
+            padding:"0px",
             width:"100%"
           }}
         >

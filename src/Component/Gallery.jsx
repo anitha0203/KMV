@@ -121,7 +121,7 @@ function Gallery() {
           <div className="container" style={{ backgroundColor: "#f1f1f1" }}>
             <>
               {images.slice(0, visible).map((item) =>
-                item.map((pics,ibm) => {
+                item.map((pics, ibm) => {
                   return (
                     <>
                       <Container key={ibm}>
@@ -143,49 +143,53 @@ function Gallery() {
                         {/* {pics.Imageurls.length === 0 && <p style={{color:"red",fontFamily:"arial",fontSize:"17px",textAlign:"left",padding:"7px"}}>No images uploaded in this month</p>} */}
 
                         <Row>
-                            {pics.Imageurls.map((dod, indx) => {
-                              return (
-                             
-                                  <Col xl={3} key={indx} style={{ margin:"0px",pading:"0px",overflow:"hidden"}}>
-                                    <center>
-                                      <Image
-                                      key={indx}
-                                        className="hoverimg"
-                                        src={dod.src}
-                                        alt="..."
-                                        style={{
-                                          height: "200px",
-                                          width: "300px",
-                                          margin: "10px",
-                                         
-                                        }}
-                                        onClick={() => {
-                                          setIndexe(dod.id);
-                                          console.log(indexe);
-                                          setIsOpen(true);
-                                        }}
-                                      />
-                                    </center>
-                                  </Col>
-                               
-                              );
-                            })}
-                          </Row>
-                          {pics.Imageurls.map((imgs, indx) => {
-                              return (
-                                carous.push({ src: imgs.src, id: imgs.id }),
-                                console.log("")
-                             );
-                            })}
-                             <ReactImageCarouselViewer
-                              open={isOpen}
-                              onClose={() => {
-                                setIsOpen(false);
-                              }}
-                              images={carous}
-                              startIndex={indexe}
-                            />
-                          
+                          {pics.Imageurls.map((dod, indx) => {
+                            return (
+                              <Col
+                                xl={3}
+                                key={indx}
+                                style={{
+                                  margin: "0px",
+                                  pading: "0px",
+                                  overflow: "hidden",
+                                }}
+                              >
+                                <center>
+                                  <Image
+                                    key={indx}
+                                    className="hoverimg"
+                                    src={dod.src}
+                                    alt="..."
+                                    style={{
+                                      height: "200px",
+                                      width: "300px",
+                                      margin: "10px",
+                                    }}
+                                    onClick={() => {
+                                      setIndexe(dod.id);
+                                      console.log(indexe);
+                                      setIsOpen(true);
+                                    }}
+                                  />
+                                </center>
+                              </Col>
+                            );
+                          })}
+                        </Row>
+                        {pics.Imageurls.map((imgs, indx) => {
+                          return (
+                            carous.push({ src: imgs.src, id: imgs.id }),
+                            console.log("")
+                          );
+                        })}
+                        <ReactImageCarouselViewer
+                          open={isOpen}
+                          onClose={() => {
+                            setIsOpen(false);
+                          }}
+                          images={carous}
+                          startIndex={indexe}
+                        />
                       </Container>
                     </>
                   );
