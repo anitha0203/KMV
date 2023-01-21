@@ -30,14 +30,14 @@ function Gallery() {
     const fetchData = async () => {
       setHide(false);
       try {
-        const res = await axios.get("http://localhost:8000/posts");
+        const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
         let imac = res.data;
         setImages(imac);
         if (images.length > 0) {
           console.log(images.length);
           setLoading(false);
         }
-        console.log("These are get data", imac);
+        //console.log("These are get data", imac);
       } catch (err) {
         setHasError(true);
       } finally {
@@ -167,7 +167,7 @@ function Gallery() {
                                     }}
                                     onClick={() => {
                                       setIndexe(dod.id);
-                                      console.log(indexe);
+                                     // console.log(indexe);
                                       setIsOpen(true);
                                     }}
                                   />
@@ -176,12 +176,14 @@ function Gallery() {
                             );
                           })}
                         </Row>
+
                         {pics.Imageurls.map((imgs, indx) => {
                           return (
-                            carous.push({ src: imgs.src, id: imgs.id }),
-                            console.log("")
+                            carous.push({ "src": imgs.src,"id":imgs.id }),
+                            console.log("im",carous)
                           );
                         })}
+
                         <ReactImageCarouselViewer
                           open={isOpen}
                           onClose={() => {
@@ -190,7 +192,7 @@ function Gallery() {
                           images={carous}
                           startIndex={indexe}
                         />
-                      </Container>
+                      </Container> 
                     </>
                   );
                 })

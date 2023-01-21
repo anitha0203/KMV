@@ -12,6 +12,7 @@ import {
   Spinner,
   OverlayTrigger,
   Tooltip,
+  Image,
 } from "react-bootstrap";
 import Header from "./Header";
 import LoginForm from "../images/Login_4.png";
@@ -83,7 +84,7 @@ function All() {
         setUpload(false);
         setLoading(true);
       try {
-        const res = await axios.get("https://actions-to-drive.herokuapp.com");
+        const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
         let imac = res.data;
         setImages(imac);
         setVisible(2)
@@ -110,7 +111,7 @@ function All() {
       const fetchData = async () => {
         setHide(false);
         try {
-          const res = await axios.get("https://actions-to-drive.herokuapp.com");
+          const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
           let imac =res.data;
           setImages(imac);
           if(images.length>0){
@@ -199,7 +200,7 @@ function All() {
     
   
     //setImageSelected(imagions);
-    console.log("imagions data1-=-", imageSelected.length);
+    console.log("imagions data1", imageSelected.length);
     
     const formData = new FormData();
     let store = new Date();
@@ -217,7 +218,7 @@ function All() {
     Array.from(imageSelected).forEach((item) => {
       formData.append("Image", item);
     });
-    const url = "https://actions-to-drive.herokuapp.com/upload";
+    const url = "https://good-ruby-headscarf.cyclic.app/upload";
     axios
       .post(url, formData)
       .then((result) => {
@@ -255,7 +256,7 @@ function All() {
   const deletea = (indx) => {
     
     axios
-      .delete(`https://actions-to-drive.herokuapp.com/Delete/${indx}`)
+      .delete(`https://good-ruby-headscarf.cyclic.app/Delete/${indx}`)
       .then((result) => {
         console.log("deleted", indx);
         console.log(result);
@@ -431,11 +432,11 @@ function All() {
                     {" "}
                     <i className="fa fa-upload" aria-hidden="true"></i> Upload
                   </Button>
-              </OverlayTrigger>
+                </OverlayTrigger>
                 </div>
 
                 <div style={{margin:"10px"}}>
-                <OverlayTrigger placement="bottom" overlay={<Tooltip id="tooltip-disabled">Delete photos</Tooltip>}>
+                 <OverlayTrigger placement="bottom" overlay={<Tooltip id="tooltip-disabled">Delete photos</Tooltip>}>
                   <Button
                     style={{
                       flex:"1",
@@ -681,12 +682,12 @@ function All() {
                               <>
                                 <Col md={3}>
                                   <div className="container"  key={index}>
-                                    <img key={index}
+                                    <Image key={index}
                                       style={{
                                         width: "180px",
                                         height: "100px",
                                         margin: "10px",
-                                        visibility:"hidden"
+                                        
                                       }}
                                       src={itms.url}
                                       alt={"image-" + index}
