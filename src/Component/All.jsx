@@ -545,7 +545,7 @@ function All() {
                                         setDummy(true);
                                         console.log("valueb:----", startDate);
                                       }} style={{position:"absolute"}}/>
-                              </div>         
+                              </div>  
                             </Stack>
                             
                           </Col>
@@ -1104,8 +1104,7 @@ function All() {
                                     backgroundColor: "#1e3796",
                                     fontSize: "large",
                                     fontFamily: "arial",
-                                    float: "left",
-                                    marginLeft: "-10px",
+                                    float: "left"
                                   }}
                                 >
                                   Load More...

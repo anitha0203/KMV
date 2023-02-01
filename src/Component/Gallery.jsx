@@ -208,7 +208,7 @@ function Gallery() {
                         fontSize: "large",
                         fontFamily: "arial",
                         float: "left",
-                        marginLeft: "-10px",
+                        marginLeft: "-40px",
                       }}
                     >
                       Load More...
