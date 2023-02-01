@@ -30,7 +30,7 @@ function Gallery() {
     const fetchData = async () => {
       setHide(false);
       try {
-        const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
+        const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
         let imac = res.data;
         setImages(imac);
         if (images.length > 0) {

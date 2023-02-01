@@ -84,7 +84,7 @@ function All() {
         setUpload(false);
         setLoading(true);
       try {
-        const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
+        const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
         let imac = res.data;
         setImages(imac);
         setVisible(2)
@@ -111,7 +111,7 @@ function All() {
       const fetchData = async () => {
         setHide(false);
         try {
-          const res = await axios.get("https://good-ruby-headscarf.cyclic.app");
+          const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
           let imac =res.data;
           setImages(imac);
           if(images.length>0){
@@ -218,7 +218,7 @@ function All() {
     Array.from(imageSelected).forEach((item) => {
       formData.append("Image", item);
     });
-    const url = "https://good-ruby-headscarf.cyclic.app/upload";
+    const url = "https://fine-hen-gaiters.cyclic.app/upload";
     axios
       .post(url, formData)
       .then((result) => {
@@ -256,7 +256,7 @@ function All() {
   const deletea = (indx) => {
     
     axios
-      .delete(`https://good-ruby-headscarf.cyclic.app/Delete/${indx}`)
+      .delete(`https://fine-hen-gaiters.cyclic.app/Delete/${indx}`)
       .then((result) => {
         console.log("deleted", indx);
         console.log(result);
