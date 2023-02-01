@@ -17,7 +17,7 @@ import Header1 from "./Header1";
 
 function Gallery() {
   const [images, setImages] = useState("");
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [indexe, setIndexe] = useState(0);
   const [hide, setHide] = useState(false);

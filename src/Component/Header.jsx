@@ -32,7 +32,7 @@ function Header() {
     <a href="/home"> </a>
     <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-          <i style={{border:"1px solid black",padding:'8px',borderRadius:"15px"}} className="fa-solid fa-user"></i>
+          {/* <i style={{border:"1px solid black",padding:'8px',borderRadius:"15px"}} className="fa-solid fa-user"></i> */}
           </Navbar.Text>
         </Navbar.Collapse>
         </Container>

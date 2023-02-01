@@ -1,3 +1,5 @@
+
+
 import React from "react";
 
 import PatternImg from "../images/pattern.jpg";
@@ -134,14 +136,14 @@ function Body() {
                 <Col>
                   <div>
                     <div>
-                      <h4 style={{ fontWeight: "bold",justifyContent:"center",height:"45px" }}>
+                      <h4 style={{ fontWeight: "bold",justifyContent:"center",height:"45px", marginBottom: "25px" }}>
                         Pavement Classification
                       </h4>
                     </div>
                     <center>
                       <img
                         src={require("../images/walking.png")}
-                        style={{ width: "70px", padding: "2px" }}
+                        style={{ width: "110px", padding: "15px" }}
                         alt="..."
                       ></img>
                     </center>
@@ -159,7 +161,7 @@ function Body() {
                     <h4
                       style={{
                         fontWeight: "bold",
-                        justifyContent:"center",height:"45px"
+                        justifyContent:"center",height:"45px", marginBottom: "25px"
                       }}
                     >
                       Concession Agreement
@@ -168,12 +170,12 @@ function Body() {
                     <center>
                       <img
                         src={require("../images/calender.png")}
-                        style={{ width: "70px", padding: "2px" }}
+                        style={{ width: "110px", padding: "20px" }}
                         alt="..."
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px",  padding: "5px 75px",textAlign:"center" }}>
+                      <p style={{ fontSize: "18px",  padding: "5px 70px",textAlign:"center" }}>
                         24-Feb-2022
                       </p>
                     </div>
@@ -184,7 +186,7 @@ function Body() {
                     <h4
                       style={{
                         fontWeight: "bold",
-                        height:"45px"
+                        height:"45px", marginBottom: "25px"
                       }}
                     >
                       Construction Period
@@ -192,12 +194,12 @@ function Body() {
                     <center>
                       <img
                         src={require("../images/time.png")}
-                        style={{ width: "70px", padding: "2px" }}
+                        style={{ width: "110px", padding: "20px" }}
                         alt="..."
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px", padding: "5px 85px",textAlign:"center" }}>
+                      <p style={{ fontSize: "18px", padding: "5px 45px",textAlign:"center" }}>
                         730 Days / 2 Years
                       </p>
                     </div>
@@ -207,7 +209,7 @@ function Body() {
                   <div >
                     <h4
                       style={{
-                        fontWeight: "bold", padding: "5px 55px",height:"45px"
+                        fontWeight: "bold", padding: "5px 55px",height:"45px", marginBottom: "25px"
                         
                       }}
                     >
@@ -216,12 +218,12 @@ function Body() {
                     <center>
                       <img
                         src={require("../images/calender.png")}
-                        style={{ width: "70px", padding: "2px" }}
+                        style={{ width: "110px", padding: "20px" }}
                         alt="..."
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px", padding: "25px 0px" }}>
+                      <p style={{ fontSize: "18px", padding: "5px 70px" }}>
                         27-Sep-2022
                       </p>
                     </div>
