@@ -17,7 +17,7 @@ import Header1 from "./Header1";
 
 function Gallery() {
   const [images, setImages] = useState("");
-  const [visible, setVisible] = useState(1);
+  const [visible, setVisible] = useState(2);
   const [isOpen, setIsOpen] = useState(false);
   const [indexe, setIndexe] = useState(0);
   const [hide, setHide] = useState(false);
@@ -30,7 +30,7 @@ function Gallery() {
     const fetchData = async () => {
       setHide(false);
       try {
-        const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
+        const res = await axios.get("https://kmvpl-backend.herokuapp.com");
         let imac = res.data;
         setImages(imac);
         if (images.length > 0) {

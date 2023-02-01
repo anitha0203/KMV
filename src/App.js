@@ -20,7 +20,7 @@ function App() {
       <Route path="/Gallery">
       <Gallery/>
       </Route>
-      <Route path="/All">
+      <Route path="/Login">
       <All/>
       </Route>
       <Route path="*" component={NoComponent}/>

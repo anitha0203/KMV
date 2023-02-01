@@ -61,11 +61,11 @@ function Body() {
                   style={{ marginLeft: "-5px" }}
                 >
                   <Stack style={{ paddingLeft: "15px" }}>
-                    <div style={{ marginTop: "50px" }}>
+                    <div style={{ marginTop: "35px" }}>
                       <h2
                         style={{
                           color: "#1e3796",
-                          paddingBottom: "5px",
+                          paddingBottom: "0px",
                           fontFamily: "Arial",
                           fontWeight: "bold",
                         }}
@@ -288,7 +288,7 @@ function Body() {
                       ></img>
                     </center>
                     <div>
-                      <p style={{ fontSize: "18px", padding: "1px 80px" }}>
+                      <p style={{ fontSize: "18px", padding: "1px 55px" }}>
                         42.119 Km's
                       </p>
                     </div>

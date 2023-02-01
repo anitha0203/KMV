@@ -84,7 +84,7 @@ function All() {
         setUpload(false);
         setLoading(true);
       try {
-        const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
+        const res = await axios.get("https://kmvpl-backend.herokuapp.com");
         let imac = res.data;
         setImages(imac);
         setVisible(2)
@@ -111,7 +111,7 @@ function All() {
       const fetchData = async () => {
         setHide(false);
         try {
-          const res = await axios.get("https://fine-hen-gaiters.cyclic.app");
+          const res = await axios.get("https://kmvpl-backend.herokuapp.com");
           let imac =res.data;
           setImages(imac);
           if(images.length>0){
@@ -218,7 +218,7 @@ function All() {
     Array.from(imageSelected).forEach((item) => {
       formData.append("Image", item);
     });
-    const url = "https://fine-hen-gaiters.cyclic.app/upload";
+    const url = "https://kmvpl-backend.herokuapp.com/upload";
     axios
       .post(url, formData)
       .then((result) => {
@@ -256,7 +256,7 @@ function All() {
   const deletea = (indx) => {
     
     axios
-      .delete(`https://fine-hen-gaiters.cyclic.app/Delete/${indx}`)
+      .delete(`https://kmvpl-backend.herokuapp.com/Delete/${indx}`)
       .then((result) => {
         console.log("deleted", indx);
         console.log(result);
@@ -612,9 +612,9 @@ function All() {
                             style={{
                               border: "1px solid #cccccc",
                               height: "120px",
-                              width: "250px",
+                              width: "200px",
                               margin: "10px",
-                              padding: "4vh",
+                              padding: "3vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
@@ -627,7 +627,7 @@ function All() {
                               height: "120px",
                               width: "250px",
                               margin: "9px",
-                              padding: "3vh",
+                              padding: "1.5vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
@@ -641,7 +641,7 @@ function All() {
                               height: "120px",
                               width: "250px",
                               margin: "10px",
-                              padding: "3vh",
+                              padding: "1.5vh",
                             }}
                           >
                             <p style={{ width: "200px" }}>
