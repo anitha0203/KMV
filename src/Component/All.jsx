@@ -89,12 +89,12 @@ function All() {
         setImages(imac);
         setVisible(2)
         if (images.length > 0) {
-          console.log(images.length);
+          // console.log(images.length);
           setLoading(false);
           setHide(true);
         }
 
-        console.log("These are get data", imac);
+        // console.log("These are get data", imac);
         setImages(imac);
         setLoading(false);
       } catch (err) {
@@ -115,10 +115,10 @@ function All() {
           let imac =res.data;
           setImages(imac);
           if(images.length>0){
-            console.log(images.length);
+            // console.log(images.length);
               setLoading(false);
           }
-          console.log("These are get data",imac);
+          // console.log("These are get data",imac);
         } catch (err) {
           setHasError(true);
         } finally {
@@ -141,23 +141,23 @@ function All() {
       obj["name"] = e.target.files[k].name;
       preview.push(obj);
     }
-    console.log("addmore images url", preview);
+    // console.log("addmore images url", preview);
     const dump = [];
     for (let i = 0; i < e.target.files.length; i++) {
       dump.push(e.target.files[i]);
     }
 
-    console.log("dumping", dump);
+    // console.log("dumping", dump);
 
     if (e.target.files.length > 0) {
-      console.log("entered into loop");
+      // console.log("entered into loop");
       setImages1(e.target.files);
       setImageSelected([...imageSelected, ...dump]);
     }
-    console.log("first", images1);
+    // console.log("first", images1);
     setImageSelected([...imageSelected, ...dump]);
-    console.log("next", imageSelected);
-    console.log("final array size", imageSelected.length);
+    // console.log("next", imageSelected);
+    // console.log("final array size", imageSelected.length);
   };
 
   const onChange = (h) => {
@@ -174,12 +174,12 @@ function All() {
       setPreview(images);
     }
     setPreview(images);
-    console.log("images data", images);
-    console.log("input fields ", imageSelected);
+    // console.log("images data", images);
+    // console.log("input fields ", imageSelected);
     //console.log("preview data",preview)
     setButto(true);
 
-    console.log("previewData", preview);
+    // console.log("previewData", preview);
     const imagions = [];
 
     //Deleting unwanted pics by comparing preview and selectedImage arrays
@@ -190,7 +190,7 @@ function All() {
         }
       }
     }
-    console.log("imagions", imagions);
+    // console.log("imagions", imagions);
   };
 
   const uploadImage = (e) => {
@@ -200,7 +200,7 @@ function All() {
     
   
     //setImageSelected(imagions);
-    console.log("imagions data1", imageSelected.length);
+    // console.log("imagions data1", imageSelected.length);
     
     const formData = new FormData();
     let store = new Date();
@@ -212,7 +212,7 @@ function All() {
     let year = store.getFullYear();
     let output = year + "-" + month + "-" + day;
    
-   console.log("goingdate",output);
+  //  console.log("goingdate",output);
     formData.append("Date", output);
 
     Array.from(imageSelected).forEach((item) => {
@@ -226,16 +226,16 @@ function All() {
         setIsUploaded(true);
         setOnSelect(false);
         setLoading(false);
-        console.log(fileRes)
+        // console.log(fileRes)
          setPreview([]);
       })
       .catch((err) => {
         if (err.result) {
           setLoading(false);
-          console.log(err.result);
+          // console.log(err.result);
         } else if (err.request) {
           setShowError(err.request);
-          console.log(err.request);
+          // console.log(err.request);
           setLoading(false);
         }
       });
@@ -246,8 +246,8 @@ function All() {
 
   const loadMore = () => {
     setVisible((prevState) => prevState + 1);
-    console.log(images.length);
-    console.log("visible",visible);
+    // console.log(images.length);
+    // console.log("visible",visible);
     if (visible===images.length) {
       setHide(false);
     } 
@@ -258,22 +258,22 @@ function All() {
     axios
       .delete(`https://kmvpl-backend.herokuapp.com/Delete/${indx}`)
       .then((result) => {
-        console.log("deleted", indx);
-        console.log(result);
+        // console.log("deleted", indx);
+        // console.log(result);
         setLoading(false);
       //  window.location.reload()
       })
       .catch((err) => {
         if (err.result) {
           setLoading(false);
-          console.log(err.result);
+          // console.log(err.result);
         } else if (err.request) {
-          console.log(err.request);
+          // console.log(err.request);
           setLoading(false);
         }
       });
 
-    console.log(indx);
+    // console.log(indx);
     
   };
 
@@ -543,7 +543,7 @@ function All() {
                               <DatePicker selected={startDate} value={startDate} onChange={(start) => {
                                         setStartDate(start);
                                         setDummy(true);
-                                        console.log("valueb:----", startDate);
+                                        // console.log("valueb:----", startDate);
                                       }} style={{position:"absolute"}}/>
                               </div>  
                             </Stack>
@@ -708,15 +708,12 @@ function All() {
                                     
                                         <i onClick={(e) => {
                                            e.preventDefault();
-                                            console.log(
-                                              "deleted file num",
-                                              index
-                                            );
+                                            // console.log("deleted file num",index);
                                             const se = preview.filter(
                                               (itm, ind) => ind !== index
                                             );
                                             setPreview(se);
-                                            console.log(se);
+                                            // console.log(se);
                                            
                                           }}
                                           className="fa-solid fa-xmark"

@@ -34,7 +34,7 @@ function Gallery() {
         let imac = res.data;
         setImages(imac);
         if (images.length > 0) {
-          console.log(images.length);
+          // console.log(images.length);
           setLoading(false);
         }
         //console.log("These are get data", imac);
@@ -167,7 +167,7 @@ function Gallery() {
                                     }}
                                     onClick={() => {
                                       setIndexe(dod.id);
-                                     // console.log(indexe);
+                                    //  // console.log(indexe);
                                       setIsOpen(true);
                                     }}
                                   />
@@ -179,8 +179,7 @@ function Gallery() {
 
                         {pics.Imageurls.map((imgs, indx) => {
                           return (
-                            carous.push({ "src": imgs.src,"id":imgs.id }),
-                            console.log("im",carous)
+                            carous.push({ "src": imgs.src,"id":imgs.id })
                           );
                         })}
 
