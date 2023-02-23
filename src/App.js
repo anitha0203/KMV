@@ -5,6 +5,7 @@ import {BrowserRouter,Route,Switch} from "react-router-dom";
 import Gallery from './Component/Gallery';
 import All from './Component/All';
 import NoComponent from './Component/NoComponent';
+import ErrorBoundary from './Component/ErroBoundary';
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <Main/>
       </Route>
       <Route path="/Gallery">
+      <ErrorBoundary>
       <Gallery/>
+      </ErrorBoundary>
       </Route>
       <Route path="/Login">
       <All/>
