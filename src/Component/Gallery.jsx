@@ -28,10 +28,7 @@ const [isViewerOpen, setIsViewerOpen] = useState(false);
 const openImageViewer = useCallback((indexe) => {
   for (let i = 0; i < indeces.length; i++) {
     if (indexe === indeces[i]) {
-      console.log("indexnum",indexe);
-      console.log("indecesarr",indeces[i]);
       setCurrentImage(i);
-      console.log("index num",i)
     }
   }
   setIsViewerOpen(true);
@@ -189,7 +186,6 @@ return (
                                       }}
                                       onClick={() => {
                                         openImageViewer(dod.id)
-                                        console.log("id",dod.id)
                                       }}
                                     />
                                   </center>
