@@ -51,8 +51,6 @@ function All() {
   const [dummy, setDummy] = useState(false);
   const [onSelect, setOnSelect] = useState(true);
   const [startDate, setStartDate] = useState(new Date());
-
-  const [images1, setImages1] = useState([]);
   const [images, setImages] = useState([]);
 
   const { email, password } = data;
@@ -142,7 +140,6 @@ function All() {
     }
 
     if (e.target.files.length > 0) {
-      setImages1(e.target.files);
       setImageSelected([...imageSelected, ...dump]);
     }
     setImageSelected([...imageSelected, ...dump]);
@@ -807,7 +804,6 @@ function All() {
                           setOnSelect(false);
                           setPreview([]);
                           setImageSelected([]);
-                          setImages1([]);
                         }}
                       >
                         Close

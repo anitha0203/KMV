@@ -28,7 +28,9 @@ const [isViewerOpen, setIsViewerOpen] = useState(false);
 const openImageViewer = useCallback((indexe) => {
   for (let i = 0; i < indeces.length; i++) {
     if (indexe === indeces[i]) {
+   
       setCurrentImage(i);
+      
     }
   }
   setIsViewerOpen(true);
@@ -186,6 +188,7 @@ return (
                                       }}
                                       onClick={() => {
                                         openImageViewer(dod.id)
+                                    
                                       }}
                                     />
                                   </center>
@@ -195,7 +198,7 @@ return (
                         </Row>
 
                         {pics &&
-                          pics.Imageurls.map((imgs, indx) => {
+                          pics.Imageurls.map((imgs) => {
                             if (imgs) {
                               carous.push(imgs.src);
                               indeces.push(imgs.id);
