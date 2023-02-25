@@ -53,7 +53,7 @@ function Body() {
                     className="d-block w-100"
                     style={{ marginTop: "0px" }}
                     src={require("../images/Carousel3.jpg")}
-                    height="300"
+                    height="400"
                   />
                 </Col>
                 <Col
@@ -61,7 +61,7 @@ function Body() {
                   style={{ marginLeft: "-5px" }}
                 >
                   <Stack style={{ paddingLeft: "15px" }}>
-                    <div style={{ marginTop: "35px" }}>
+                    <div style={{ marginTop: "10px" }}>
                       <h2
                         style={{
                           color: "#1e3796",
@@ -73,7 +73,7 @@ function Body() {
                         Project Name
                       </h2>
                       <hr
-                        style={{ width: "300px", border: "1px solid #ccc" }}
+                      style={{ borderBottom: "1px solid #ccc",width:"15vw",display:"inline-block"   }}
                       />
                       <p style={lineStyle1}>
                         Construction of 4 lane Access Controlled New Greenfield
@@ -85,7 +85,7 @@ function Body() {
                         Pradesh. (Package-III)
                       </p>
                     </div>
-                    <div style={{ marginTop: "45px" }}>
+                    <div style={{ marginTop: "20px" }}>
                       <h2
                         style={{
                           color: "#1e3796",
@@ -96,7 +96,7 @@ function Body() {
                         Scope of Work
                       </h2>
                       <hr
-                        style={{ width: "300px", border: "1px solid #ccc" }}
+                      style={{ borderBottom: "1px solid #ccc",width:"15vw",display:"inline-block"   }}
                       ></hr>
                       <p style={lineStyle1}>
                         Construction of 4 lane Access controlled Green Filed
